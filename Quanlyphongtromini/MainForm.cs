@@ -23,7 +23,6 @@ namespace Quanlyphongtromini
             var btn = (Button)sender;
             if (btn == _current) return;
 
-            // bỏ tô sáng nút cũ, tô sáng nút mới
             _current.BackColor = _normal;
             _current.Font = new Font(_current.Font, FontStyle.Regular);
             _current.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#2F55A8");
