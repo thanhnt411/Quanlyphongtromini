@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
     namespace Quanlyphongtromini.UserControls
     {
-        public partial class PhongTroControl : UserControl
-        {
-            // Chuỗi kết nối tới SQL Server (dùng chung cho mọi nút)
-            private string connectionString = @"Data Source=localhost;Initial Catalog=QLPhongTro;User ID=sa;password = 123456;Trust Server Certificate=True;";
+    public partial class PhongTroControl : UserControl
+    {
+        // Chuỗi kết nối tới SQL Server (dùng chung cho mọi nút)
+        private string connectionString = @"Data Source=localhost;Initial Catalog=QLPhongTro;User ID=sa;password = 123456;Trust Server Certificate=True;";
 
-            public PhongTroControl()
-            {
-                InitializeComponent();
+        public PhongTroControl()
+        {
+            InitializeComponent();
         }
 
         // Đọc dữ liệu từ bảng PhongTro trong DB rồi hiển thị lên dgvPhongTro.
@@ -242,10 +242,9 @@ using System.Windows.Forms;
         }
 
         // Đổ dữ liệu từ dòng được chọn trên DataGridView xuống các ô nhập liệu bên dưới
-        private void dgvPhongTro_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvPhongTro_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int i = e.RowIndex;
-          
             txtMaPhong.Text = dgvPhongTro.Rows[i].Cells[0].Value.ToString();
             txtTenPhong.Text = dgvPhongTro.Rows[i].Cells[1].Value.ToString();
             txtDienTich.Text = dgvPhongTro.Rows[i].Cells[2].Value.ToString();
