@@ -12,7 +12,7 @@ using System.Windows.Forms;
         public partial class PhongTroControl : UserControl
         {
             // Chuỗi kết nối tới SQL Server (dùng chung cho mọi nút)
-            private string connectionString = @"Data Source=localhost; Initial Catalog=""Phong_Tro""; User ID=sa; password = 123456; TrustServerCertificate=True;";
+            private string connectionString = @"Data Source=localhost;Initial Catalog=QLPhongTro;User ID=sa;password = 123456;Trust Server Certificate=True;";
 
             public PhongTroControl()
             {
@@ -25,13 +25,13 @@ using System.Windows.Forms;
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sql = "SELECT MaPhong, TenPhong, DienTich, GiaThue, ToiDa, TrangThai FROM PhongTro";
+                string sql = "SELECT * FROM PhongTro";
                 if (keyword != "")
                 {
                     sql += @" WHERE MaPhong LIKE @kw
                               OR TenPhong LIKE @kw
                               OR CONVERT(NVARCHAR(50), DienTich) LIKE @kw
-                              OR CONVERT(NVARCHAR(50), GiaThue) LIKE @kw
+                              OR CONVERT(NVARCHAR(50), GiaPhong) LIKE @kw
                               OR CONVERT(NVARCHAR(50), ToiDa) LIKE @kw
                               OR TrangThai LIKE @kw";
                 }
@@ -44,7 +44,7 @@ using System.Windows.Forms;
                 DataTable table = new DataTable();
                 adapter.Fill(table);
 
-                dgvPhongTro.AutoGenerateColumns = true;
+                dgvPhongTro.AutoGenerateColumns = false;
                 dgvPhongTro.DataSource = table;
             }
         }
@@ -62,9 +62,9 @@ using System.Windows.Forms;
                 MessageBox.Show("Diện tích phải là số lớn hơn 0!");
                 return false;
             }
-            if (!decimal.TryParse(txtGiaThue.Text.Trim(), out decimal giaThue) || giaThue < 0)
+            if (!decimal.TryParse(txtGiaPhong.Text.Trim(), out decimal giaPhong) || giaPhong < 0)
             {
-                MessageBox.Show("Giá thuê phải là số không âm!");
+                MessageBox.Show("Giá phòng phải là số không âm!");
                 return false;
             }
             if (!int.TryParse(txtToiDa.Text.Trim(), out int toiDa) || toiDa <= 0)
@@ -86,7 +86,7 @@ using System.Windows.Forms;
             txtMaPhong.Clear();
             txtTenPhong.Clear();
             txtDienTich.Clear();
-            txtGiaThue.Clear();
+            txtGiaPhong.Clear();
             txtToiDa.Clear();
             cboTrangThai.SelectedIndex = -1;
             txtMaPhong.Focus();
@@ -123,14 +123,14 @@ using System.Windows.Forms;
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string sql = @"INSERT INTO PhongTro (MaPhong, TenPhong, DienTich, GiaThue, ToiDa, TrangThai)
-                                   VALUES (@MaPhong, @TenPhong, @DienTich, @GiaThue, @ToiDa, @TrangThai)";
+                    string sql = @"INSERT INTO PhongTro (MaPhong, TenPhong, DienTich, GiaPhong, ToiDa, TrangThai)
+                                   VALUES (@MaPhong, @TenPhong, @DienTich, @GiaPhong, @ToiDa, @TrangThai)";
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@MaPhong", txtMaPhong.Text.Trim());
                         cmd.Parameters.AddWithValue("@TenPhong", txtTenPhong.Text.Trim());
                         cmd.Parameters.AddWithValue("@DienTich", decimal.Parse(txtDienTich.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@GiaThue", decimal.Parse(txtGiaThue.Text.Trim()));
+                        cmd.Parameters.AddWithValue("@GiaPhong", decimal.Parse(txtGiaPhong.Text.Trim()));
                         cmd.Parameters.AddWithValue("@ToiDa", int.Parse(txtToiDa.Text.Trim()));
                         cmd.Parameters.AddWithValue("@TrangThai", cboTrangThai.Text.Trim());
                         cmd.ExecuteNonQuery();
@@ -166,7 +166,7 @@ using System.Windows.Forms;
                 {
                     conn.Open();
                     string sql = @"UPDATE PhongTro
-                                   SET TenPhong = @TenPhong, DienTich = @DienTich, GiaThue = @GiaThue,
+                                   SET TenPhong = @TenPhong, DienTich = @DienTich, GiaPhong = @GiaPhong,
                                        ToiDa = @ToiDa, TrangThai = @TrangThai
                                    WHERE MaPhong = @MaPhong";
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -174,7 +174,7 @@ using System.Windows.Forms;
                         cmd.Parameters.AddWithValue("@MaPhong", txtMaPhong.Text.Trim());
                         cmd.Parameters.AddWithValue("@TenPhong", txtTenPhong.Text.Trim());
                         cmd.Parameters.AddWithValue("@DienTich", decimal.Parse(txtDienTich.Text.Trim()));
-                        cmd.Parameters.AddWithValue("@GiaThue", decimal.Parse(txtGiaThue.Text.Trim()));
+                        cmd.Parameters.AddWithValue("@GiaPhong", decimal.Parse(txtGiaPhong.Text.Trim()));
                         cmd.Parameters.AddWithValue("@ToiDa", int.Parse(txtToiDa.Text.Trim()));
                         cmd.Parameters.AddWithValue("@TrangThai", cboTrangThai.Text.Trim());
 
@@ -245,13 +245,11 @@ using System.Windows.Forms;
         private void dgvPhongTro_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = e.RowIndex;
-            if (i < 0) return;   // bấm vào tiêu đề cột thì bỏ qua
-
-            // Dữ liệu bắt đầu từ Cells[0]
+          
             txtMaPhong.Text = dgvPhongTro.Rows[i].Cells[0].Value.ToString();
             txtTenPhong.Text = dgvPhongTro.Rows[i].Cells[1].Value.ToString();
             txtDienTich.Text = dgvPhongTro.Rows[i].Cells[2].Value.ToString();
-            txtGiaThue.Text = dgvPhongTro.Rows[i].Cells[3].Value.ToString();
+            txtGiaPhong.Text = dgvPhongTro.Rows[i].Cells[3].Value.ToString();
             txtToiDa.Text = dgvPhongTro.Rows[i].Cells[4].Value.ToString();
             cboTrangThai.Text = dgvPhongTro.Rows[i].Cells[5].Value.ToString();
         }

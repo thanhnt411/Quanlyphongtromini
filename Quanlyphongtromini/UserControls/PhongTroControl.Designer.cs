@@ -32,12 +32,6 @@
             txtTimKiem = new TextBox();
             btnTim = new Button();
             dgvPhongTro = new DataGridView();
-            colMaPhong = new DataGridViewTextBoxColumn();
-            colTenPhong = new DataGridViewTextBoxColumn();
-            colDienTich = new DataGridViewTextBoxColumn();
-            colGiaThue = new DataGridViewTextBoxColumn();
-            colToiDa = new DataGridViewTextBoxColumn();
-            colTrangThai = new DataGridViewTextBoxColumn();
             pnlThongTin = new Panel();
             tlpThongTin = new TableLayoutPanel();
             lblMaPhong = new Label();
@@ -45,9 +39,9 @@
             txtMaPhong = new TextBox();
             txtTenPhong = new TextBox();
             lblDienTich = new Label();
-            lblGiaThue = new Label();
+            lblGiaPhong = new Label();
             txtDienTich = new TextBox();
-            txtGiaThue = new TextBox();
+            txtGiaPhong = new TextBox();
             lblToiDa = new Label();
             lblTrangThai = new Label();
             txtToiDa = new TextBox();
@@ -57,6 +51,12 @@
             btnXoa = new Button();
             btnSua = new Button();
             btnThem = new Button();
+            colMaPhong = new DataGridViewTextBoxColumn();
+            colTenPhong = new DataGridViewTextBoxColumn();
+            colDienTich = new DataGridViewTextBoxColumn();
+            colGiaPhong = new DataGridViewTextBoxColumn();
+            colToiDa = new DataGridViewTextBoxColumn();
+            colTrangThai = new DataGridViewTextBoxColumn();
             tlpMain.SuspendLayout();
             pnlTimKiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhongTro).BeginInit();
@@ -145,7 +145,7 @@
             dgvPhongTro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPhongTro.ColumnHeadersHeight = 34;
             dgvPhongTro.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvPhongTro.Columns.AddRange(new DataGridViewColumn[] { colMaPhong, colTenPhong, colDienTich, colGiaThue, colToiDa, colTrangThai });
+            dgvPhongTro.Columns.AddRange(new DataGridViewColumn[] { colMaPhong, colTenPhong, colDienTich, colGiaPhong, colToiDa, colTrangThai });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
@@ -170,60 +170,6 @@
             dgvPhongTro.Size = new Size(1150, 447);
             dgvPhongTro.TabIndex = 1;
             // 
-            // colMaPhong
-            // 
-            colMaPhong.DataPropertyName = "MaPhong";
-            colMaPhong.HeaderText = "MÃ PHÒNG";
-            colMaPhong.MinimumWidth = 8;
-            colMaPhong.Name = "colMaPhong";
-            colMaPhong.ReadOnly = true;
-            // 
-            // colTenPhong
-            // 
-            colTenPhong.DataPropertyName = "TenPhong";
-            colTenPhong.HeaderText = "TÊN PHÒNG";
-            colTenPhong.MinimumWidth = 8;
-            colTenPhong.Name = "colTenPhong";
-            colTenPhong.ReadOnly = true;
-            // 
-            // colDienTich
-            // 
-            colDienTich.DataPropertyName = "DienTich";
-            dataGridViewCellStyle2.Format = "0 \"m²\"";
-            colDienTich.DefaultCellStyle = dataGridViewCellStyle2;
-            colDienTich.HeaderText = "DIỆN TÍCH";
-            colDienTich.MinimumWidth = 8;
-            colDienTich.Name = "colDienTich";
-            colDienTich.ReadOnly = true;
-            // 
-            // colGiaThue
-            // 
-            colGiaThue.DataPropertyName = "GiaThue";
-            dataGridViewCellStyle3.Format = "N0";
-            colGiaThue.DefaultCellStyle = dataGridViewCellStyle3;
-            colGiaThue.HeaderText = "GIÁ THUÊ";
-            colGiaThue.MinimumWidth = 8;
-            colGiaThue.Name = "colGiaThue";
-            colGiaThue.ReadOnly = true;
-            // 
-            // colToiDa
-            // 
-            colToiDa.DataPropertyName = "ToiDa";
-            dataGridViewCellStyle4.Format = "0 \"người\"";
-            colToiDa.DefaultCellStyle = dataGridViewCellStyle4;
-            colToiDa.HeaderText = "TỐI ĐA";
-            colToiDa.MinimumWidth = 8;
-            colToiDa.Name = "colToiDa";
-            colToiDa.ReadOnly = true;
-            // 
-            // colTrangThai
-            // 
-            colTrangThai.DataPropertyName = "TrangThai";
-            colTrangThai.HeaderText = "TRẠNG THÁI";
-            colTrangThai.MinimumWidth = 8;
-            colTrangThai.Name = "colTrangThai";
-            colTrangThai.ReadOnly = true;
-            // 
             // pnlThongTin
             // 
             pnlThongTin.BackColor = Color.White;
@@ -247,9 +193,9 @@
             tlpThongTin.Controls.Add(txtMaPhong, 0, 1);
             tlpThongTin.Controls.Add(txtTenPhong, 1, 1);
             tlpThongTin.Controls.Add(lblDienTich, 0, 2);
-            tlpThongTin.Controls.Add(lblGiaThue, 1, 2);
+            tlpThongTin.Controls.Add(lblGiaPhong, 1, 2);
             tlpThongTin.Controls.Add(txtDienTich, 0, 3);
-            tlpThongTin.Controls.Add(txtGiaThue, 1, 3);
+            tlpThongTin.Controls.Add(txtGiaPhong, 1, 3);
             tlpThongTin.Controls.Add(lblToiDa, 0, 4);
             tlpThongTin.Controls.Add(lblTrangThai, 1, 4);
             tlpThongTin.Controls.Add(txtToiDa, 0, 5);
@@ -329,18 +275,18 @@
             lblDienTich.Text = "Diện tích (m²)";
             lblDienTich.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // lblGiaThue
+            // lblGiaPhong
             // 
-            lblGiaThue.Dock = DockStyle.Fill;
-            lblGiaThue.Font = new Font("Segoe UI", 8F);
-            lblGiaThue.ForeColor = Color.FromArgb(107, 114, 128);
-            lblGiaThue.Location = new Point(562, 94);
-            lblGiaThue.Margin = new Padding(4, 0, 4, 0);
-            lblGiaThue.Name = "lblGiaThue";
-            lblGiaThue.Size = new Size(550, 37);
-            lblGiaThue.TabIndex = 5;
-            lblGiaThue.Text = "Giá thuê";
-            lblGiaThue.TextAlign = ContentAlignment.BottomLeft;
+            lblGiaPhong.Dock = DockStyle.Fill;
+            lblGiaPhong.Font = new Font("Segoe UI", 8F);
+            lblGiaPhong.ForeColor = Color.FromArgb(107, 114, 128);
+            lblGiaPhong.Location = new Point(562, 94);
+            lblGiaPhong.Margin = new Padding(4, 0, 4, 0);
+            lblGiaPhong.Name = "lblGiaPhong";
+            lblGiaPhong.Size = new Size(550, 37);
+            lblGiaPhong.TabIndex = 5;
+            lblGiaPhong.Text = "Giá phòng";
+            lblGiaPhong.TextAlign = ContentAlignment.BottomLeft;
             // 
             // txtDienTich
             // 
@@ -353,16 +299,16 @@
             txtDienTich.Size = new Size(541, 34);
             txtDienTich.TabIndex = 6;
             // 
-            // txtGiaThue
+            // txtGiaPhong
             // 
-            txtGiaThue.BorderStyle = BorderStyle.FixedSingle;
-            txtGiaThue.Dock = DockStyle.Top;
-            txtGiaThue.Font = new Font("Segoe UI", 10F);
-            txtGiaThue.Location = new Point(575, 136);
-            txtGiaThue.Margin = new Padding(17, 5, 0, 5);
-            txtGiaThue.Name = "txtGiaThue";
-            txtGiaThue.Size = new Size(541, 34);
-            txtGiaThue.TabIndex = 7;
+            txtGiaPhong.BorderStyle = BorderStyle.FixedSingle;
+            txtGiaPhong.Dock = DockStyle.Top;
+            txtGiaPhong.Font = new Font("Segoe UI", 10F);
+            txtGiaPhong.Location = new Point(575, 136);
+            txtGiaPhong.Margin = new Padding(17, 5, 0, 5);
+            txtGiaPhong.Name = "txtGiaPhong";
+            txtGiaPhong.Size = new Size(541, 34);
+            txtGiaPhong.TabIndex = 7;
             // 
             // lblToiDa
             // 
@@ -497,6 +443,60 @@
             btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
             // 
+            // colMaPhong
+            // 
+            colMaPhong.DataPropertyName = "MaPhong";
+            colMaPhong.HeaderText = "MÃ PHÒNG";
+            colMaPhong.MinimumWidth = 8;
+            colMaPhong.Name = "colMaPhong";
+            colMaPhong.ReadOnly = true;
+            // 
+            // colTenPhong
+            // 
+            colTenPhong.DataPropertyName = "TenPhong";
+            colTenPhong.HeaderText = "TÊN PHÒNG";
+            colTenPhong.MinimumWidth = 8;
+            colTenPhong.Name = "colTenPhong";
+            colTenPhong.ReadOnly = true;
+            // 
+            // colDienTich
+            // 
+            colDienTich.DataPropertyName = "DienTich";
+            dataGridViewCellStyle2.Format = "0 \"m²\"";
+            colDienTich.DefaultCellStyle = dataGridViewCellStyle2;
+            colDienTich.HeaderText = "DIỆN TÍCH";
+            colDienTich.MinimumWidth = 8;
+            colDienTich.Name = "colDienTich";
+            colDienTich.ReadOnly = true;
+            // 
+            // colGiaPhong
+            // 
+            colGiaPhong.DataPropertyName = "GiaPhong";
+            dataGridViewCellStyle3.Format = "N0";
+            colGiaPhong.DefaultCellStyle = dataGridViewCellStyle3;
+            colGiaPhong.HeaderText = "GIÁ PHÒNG";
+            colGiaPhong.MinimumWidth = 8;
+            colGiaPhong.Name = "colGiaPhong";
+            colGiaPhong.ReadOnly = true;
+            // 
+            // colToiDa
+            // 
+            colToiDa.DataPropertyName = "ToiDa";
+            dataGridViewCellStyle4.Format = "0 \"người\"";
+            colToiDa.DefaultCellStyle = dataGridViewCellStyle4;
+            colToiDa.HeaderText = "TỐI ĐA";
+            colToiDa.MinimumWidth = 8;
+            colToiDa.Name = "colToiDa";
+            colToiDa.ReadOnly = true;
+            // 
+            // colTrangThai
+            // 
+            colTrangThai.DataPropertyName = "TrangThai";
+            colTrangThai.HeaderText = "TRẠNG THÁI";
+            colTrangThai.MinimumWidth = 8;
+            colTrangThai.Name = "colTrangThai";
+            colTrangThai.ReadOnly = true;
+            // 
             // PhongTroControl
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -524,12 +524,6 @@
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.DataGridView dgvPhongTro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMaPhong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTenPhong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDienTich;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colGiaThue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colToiDa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTrangThai;
         private System.Windows.Forms.Panel pnlThongTin;
         private System.Windows.Forms.TableLayoutPanel tlpThongTin;
         private System.Windows.Forms.Label lblMaPhong;
@@ -537,9 +531,9 @@
         private System.Windows.Forms.TextBox txtMaPhong;
         private System.Windows.Forms.TextBox txtTenPhong;
         private System.Windows.Forms.Label lblDienTich;
-        private System.Windows.Forms.Label lblGiaThue;
+        private System.Windows.Forms.Label lblGiaPhong;
         private System.Windows.Forms.TextBox txtDienTich;
-        private System.Windows.Forms.TextBox txtGiaThue;
+        private System.Windows.Forms.TextBox txtGiaPhong;
         private System.Windows.Forms.Label lblToiDa;
         private System.Windows.Forms.Label lblTrangThai;
         private System.Windows.Forms.TextBox txtToiDa;
@@ -549,5 +543,11 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
+        private DataGridViewTextBoxColumn colMaPhong;
+        private DataGridViewTextBoxColumn colTenPhong;
+        private DataGridViewTextBoxColumn colDienTich;
+        private DataGridViewTextBoxColumn colGiaPhong;
+        private DataGridViewTextBoxColumn colToiDa;
+        private DataGridViewTextBoxColumn colTrangThai;
     }
 }
