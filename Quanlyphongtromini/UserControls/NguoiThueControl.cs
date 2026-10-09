@@ -24,6 +24,23 @@ namespace Quanlyphongtromini.UserControls
 
             // Click vào dòng trong bảng thì hiện dữ liệu lên các ô nhập
             dgvNguoiThue.CellClick += dgvNguoiThue_CellClick;
+
+            // Nhấn Enter trong ô tìm kiếm thì tìm luôn
+            txtTimKiem.KeyDown += (s, ev) =>
+            {
+                if (ev.KeyCode == Keys.Enter)
+                {
+                    btnTim_Click(s, EventArgs.Empty);
+                    ev.SuppressKeyPress = true; // tránh tiếng "ding"
+                }
+            };
+
+            // Xóa hết ô tìm kiếm thì hiện lại toàn bộ danh sách
+            txtTimKiem.TextChanged += (s, ev) =>
+            {
+                if (txtTimKiem.Text.Trim() == "")
+                    load_dgvNguoiThue();
+            };
         }
 
         // ============ BẮT LỖI TRỐNG THÔNG TIN ============
@@ -253,9 +270,11 @@ namespace Quanlyphongtromini.UserControls
             }
         }
 
+        // ============ NÚT LÀM MỚI ============
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             XoaTrangONhap();
+            txtTimKiem.Clear();   // xóa luôn ô tìm kiếm
             load_dgvNguoiThue();
             dgvNguoiThue.ClearSelection();
             txtMaNguoi.Focus();
@@ -274,36 +293,27 @@ namespace Quanlyphongtromini.UserControls
 
         private void btnTim_Click(object sender, EventArgs e)
         {
-            string p_MaNguoi = txtMaNguoi.Text.Trim();
-            string p_HoTen = txtHoTen.Text.Trim();
-            string p_DiaChi = txtDiaChi.Text.Trim();
-            string p_Cccd = txtCCCD.Text.Trim();
-            string p_Sdt = txtSdt.Text.Trim();
+            string tuKhoa = txtTimKiem.Text.Trim();
 
             try
             {
                 // B2: kết nối đến DB
                 if (con.State == ConnectionState.Closed) con.Open();
 
-                // B3: tạo câu truy vấn, dùng LIKE để tìm gần đúng
-                // ISNULL(cột, '') để dòng có giá trị NULL vẫn được tìm thấy khi ô tìm kiếm để trống
+                // B3: tìm gần đúng theo tất cả các cột bằng một từ khóa duy nhất
+                // ISNULL(cột, '') để dòng có giá trị NULL không làm hỏng điều kiện
                 string query = "SELECT MaNguoi, Hoten, Sdt, Cccd, DiaChi FROM NguoiThue WHERE " +
-                               "MaNguoi LIKE @MaNguoi " +
-                               "AND Hoten LIKE @Hoten " +
-                               "AND ISNULL(DiaChi, '') LIKE @DiaChi " +
-                               "AND ISNULL(Cccd, '') LIKE @Cccd " +
-                               "AND ISNULL(Sdt, '') LIKE @Sdt";
+                               "MaNguoi LIKE @TuKhoa " +
+                               "OR Hoten LIKE @TuKhoa " +
+                               "OR ISNULL(Sdt, '') LIKE @TuKhoa " +
+                               "OR ISNULL(Cccd, '') LIKE @TuKhoa " +
+                               "OR ISNULL(DiaChi, '') LIKE @TuKhoa";
 
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@MaNguoi", "%" + p_MaNguoi + "%");
-                cmd.Parameters.AddWithValue("@Hoten", "%" + p_HoTen + "%");
-                cmd.Parameters.AddWithValue("@DiaChi", "%" + p_DiaChi + "%");
-                cmd.Parameters.AddWithValue("@Cccd", "%" + p_Cccd + "%");
-                cmd.Parameters.AddWithValue("@Sdt", "%" + p_Sdt + "%");
+                cmd.Parameters.AddWithValue("@TuKhoa", "%" + tuKhoa + "%");
 
                 // B4: tạo đối tượng dataAdapter để lấy dữ liệu từ cmd
-                SqlDataAdapter da = new SqlDataAdapter();
-                da.SelectCommand = cmd;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
 
                 // B5: đổ dữ liệu vào DataTable rồi hiển thị lên bảng
                 DataTable dt = new DataTable();

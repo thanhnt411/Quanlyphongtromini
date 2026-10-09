@@ -95,7 +95,7 @@
             txtTimKiem.Font = new Font("Segoe UI", 10F);
             txtTimKiem.Location = new Point(0, 4);
             txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.PlaceholderText = "Tên hoặc CCCD...";
+            txtTimKiem.PlaceholderText = "Tìm Kiếm";
             txtTimKiem.Size = new Size(693, 25);
             txtTimKiem.TabIndex = 0;
             // 
