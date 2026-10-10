@@ -271,7 +271,7 @@
             txtMaNguoi.Name = "txtMaNguoi";
             txtMaNguoi.Size = new Size(378, 25);
             txtMaNguoi.TabIndex = 2;
-            // 
+           
             // txtHoTen
             // 
             txtHoTen.BorderStyle = BorderStyle.FixedSingle;

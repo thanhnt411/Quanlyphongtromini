@@ -335,5 +335,5 @@ namespace Quanlyphongtromini.UserControls
                 MessageBox.Show("Không tìm kiếm được: " + ex.Message);
             }
         }
-    }
+  }
 }
