@@ -15,6 +15,7 @@
         private void InitializeComponent()
         {
             this.pnlSidebar = new System.Windows.Forms.Panel();
+            this.btnBaoCao = new System.Windows.Forms.Button();
             this.btnHoaDon = new System.Windows.Forms.Button();
             this.btnHopDong = new System.Windows.Forms.Button();
             this.btnNguoiThue = new System.Windows.Forms.Button();
@@ -28,6 +29,7 @@
             // pnlSidebar
             //
             this.pnlSidebar.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
+            this.pnlSidebar.Controls.Add(this.btnBaoCao);
             this.pnlSidebar.Controls.Add(this.btnHoaDon);
             this.pnlSidebar.Controls.Add(this.btnHopDong);
             this.pnlSidebar.Controls.Add(this.btnNguoiThue);
@@ -152,6 +154,26 @@
             this.btnHoaDon.UseVisualStyleBackColor = false;
             this.btnHoaDon.Click += new System.EventHandler(this.btnMenu_Click);
             //
+            // btnBaoCao
+            //
+            this.btnBaoCao.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
+            this.btnBaoCao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaoCao.FlatAppearance.BorderSize = 0;
+            this.btnBaoCao.FlatAppearance.MouseOverBackColor = System.Drawing.ColorTranslator.FromHtml("#2F55A8");
+            this.btnBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBaoCao.Font = new System.Drawing.Font("Segoe UI Emoji", 9F);
+            this.btnBaoCao.ForeColor = System.Drawing.Color.White;
+            this.btnBaoCao.Location = new System.Drawing.Point(5, 211);
+            this.btnBaoCao.Name = "btnBaoCao";
+            this.btnBaoCao.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnBaoCao.Size = new System.Drawing.Size(147, 32);
+            this.btnBaoCao.TabIndex = 6;
+            this.btnBaoCao.Tag = "BaoCao";
+            this.btnBaoCao.Text = "📊  Báo cáo";
+            this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaoCao.UseVisualStyleBackColor = false;
+            this.btnBaoCao.Click += new System.EventHandler(this.btnMenu_Click);
+            //
             // pnlContent (nơi chứa các UserControl)
             //
             this.pnlContent.BackColor = System.Drawing.ColorTranslator.FromHtml("#F2F4F8");
@@ -183,6 +205,7 @@
         private System.Windows.Forms.Button btnNguoiThue;
         private System.Windows.Forms.Button btnHopDong;
         private System.Windows.Forms.Button btnHoaDon;
+        private System.Windows.Forms.Button btnBaoCao;
         private System.Windows.Forms.Panel pnlContent;
     }
 }
