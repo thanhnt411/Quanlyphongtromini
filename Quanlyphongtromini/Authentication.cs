@@ -20,8 +20,6 @@ namespace Quanlyphongtromini.Services
             email = email.Trim();
             soDienThoai = soDienThoai.Trim();
 
-            try
-            {
                 using var conn = new SqlConnection(connectionString);
                 conn.Open();
 
@@ -51,22 +49,10 @@ namespace Quanlyphongtromini.Services
                 insert.Parameters.AddWithValue("@m", matKhau);
                 insert.ExecuteNonQuery();
                 return null;
-            }
-            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
-            {
-                return "Tên đăng nhập hoặc email đã tồn tại.";
-            }
-            catch (SqlException ex)
-            {
-                Debug.WriteLine(ex);
-                return "Không kết nối được CSDL. Hãy kiểm tra SQL Server.";
-            }
         }
 
         public static string Login(string tenDangNhap, string matKhau)
         {
-            try
-            {
                 using var conn = new SqlConnection(connectionString);
                 conn.Open();
                 using var cmd = new SqlCommand(
@@ -81,12 +67,6 @@ namespace Quanlyphongtromini.Services
 
                 TenDangNhap = r.GetString(0);
                 return null;
-            }
-            catch (SqlException ex)
-            {
-                Debug.WriteLine(ex);
-                return "Không kết nối được CSDL. Hãy kiểm tra SQL Server.";
-            }
         }
     }
 }
