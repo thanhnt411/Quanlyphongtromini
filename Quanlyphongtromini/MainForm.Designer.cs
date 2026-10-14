@@ -1,4 +1,4 @@
-﻿namespace Quanlyphongtromini
+namespace Quanlyphongtromini
 {
     partial class MainForm
     {
@@ -14,210 +14,283 @@
         }
         private void InitializeComponent()
         {
-            this.pnlSidebar = new System.Windows.Forms.Panel();
-            this.btnBaoCao = new System.Windows.Forms.Button();
-            this.btnDichVu = new System.Windows.Forms.Button();
-            this.btnHoaDon = new System.Windows.Forms.Button();
-            this.btnHopDong = new System.Windows.Forms.Button();
-            this.btnNguoiThue = new System.Windows.Forms.Button();
-            this.btnPhongTro = new System.Windows.Forms.Button();
-            this.btnTongQuan = new System.Windows.Forms.Button();
-            this.lblLogo = new System.Windows.Forms.Label();
-            this.pnlContent = new System.Windows.Forms.Panel();
-            this.pnlSidebar.SuspendLayout();
-            this.SuspendLayout();
-            //
+            pnlSidebar = new Panel();
+            btnDangXuat = new Button();
+            lblNguoiDung = new Label();
+            btnBaoCao = new Button();
+            btnDichVu = new Button();
+            btnHoaDon = new Button();
+            btnHopDong = new Button();
+            btnNguoiThue = new Button();
+            btnPhongTro = new Button();
+            btnTongQuan = new Button();
+            lblLogo = new Label();
+            pnlContent = new Panel();
+            pnlSidebar.SuspendLayout();
+            SuspendLayout();
+            // 
             // pnlSidebar
-            //
-            this.pnlSidebar.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.pnlSidebar.Controls.Add(this.btnBaoCao);
-            this.pnlSidebar.Controls.Add(this.btnDichVu);
-            this.pnlSidebar.Controls.Add(this.btnHoaDon);
-            this.pnlSidebar.Controls.Add(this.btnHopDong);
-            this.pnlSidebar.Controls.Add(this.btnNguoiThue);
-            this.pnlSidebar.Controls.Add(this.btnPhongTro);
-            this.pnlSidebar.Controls.Add(this.btnTongQuan);
-            this.pnlSidebar.Controls.Add(this.lblLogo);
-            this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
-            this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(157, 600);
-            this.pnlSidebar.TabIndex = 0;
-            //
-            // lblLogo
-            //
-            this.lblLogo.Font = new System.Drawing.Font("Segoe UI Emoji", 11F, System.Drawing.FontStyle.Bold);
-            this.lblLogo.ForeColor = System.Drawing.Color.White;
-            this.lblLogo.Location = new System.Drawing.Point(0, 0);
-            this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.lblLogo.Size = new System.Drawing.Size(157, 38);
-            this.lblLogo.TabIndex = 0;
-            this.lblLogo.Text = "🏠 Phòng trọ mini";
-            this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
-            // btnTongQuan (đang được chọn)
-            //
-            this.btnTongQuan.BackColor = System.Drawing.ColorTranslator.FromHtml("#3B5BC0");
-            this.btnTongQuan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTongQuan.FlatAppearance.BorderSize = 0;
-            this.btnTongQuan.FlatAppearance.MouseOverBackColor = System.Drawing.ColorTranslator.FromHtml("#3B5BC0");
-            this.btnTongQuan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTongQuan.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Bold);
-            this.btnTongQuan.ForeColor = System.Drawing.Color.White;
-            this.btnTongQuan.Location = new System.Drawing.Point(5, 41);
-            this.btnTongQuan.Name = "btnTongQuan";
-            this.btnTongQuan.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnTongQuan.Size = new System.Drawing.Size(147, 32);
-            this.btnTongQuan.TabIndex = 1;
-            this.btnTongQuan.Tag = "TongQuan";
-            this.btnTongQuan.Text = "▦  Tổng quan";
-            this.btnTongQuan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTongQuan.UseVisualStyleBackColor = false;
-            this.btnTongQuan.Click += new System.EventHandler(this.btnMenu_Click);
-            //
-            // btnPhongTro
-            //
-            this.btnPhongTro.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.btnPhongTro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPhongTro.FlatAppearance.BorderSize = 0;
-            this.btnPhongTro.FlatAppearance.MouseOverBackColor = System.Drawing.ColorTranslator.FromHtml("#2F55A8");
-            this.btnPhongTro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPhongTro.Font = new System.Drawing.Font("Segoe UI Emoji", 9F);
-            this.btnPhongTro.ForeColor = System.Drawing.Color.White;
-            this.btnPhongTro.Location = new System.Drawing.Point(5, 75);
-            this.btnPhongTro.Name = "btnPhongTro";
-            this.btnPhongTro.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnPhongTro.Size = new System.Drawing.Size(147, 32);
-            this.btnPhongTro.TabIndex = 2;
-            this.btnPhongTro.Tag = "PhongTro";
-            this.btnPhongTro.Text = "🏢  Phòng trọ";
-            this.btnPhongTro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPhongTro.UseVisualStyleBackColor = false;
-            this.btnPhongTro.Click += new System.EventHandler(this.btnMenu_Click);
-            //
-            // btnNguoiThue
-            //
-            this.btnNguoiThue.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.btnNguoiThue.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNguoiThue.FlatAppearance.BorderSize = 0;
-            this.btnNguoiThue.FlatAppearance.MouseOverBackColor = System.Drawing.ColorTranslator.FromHtml("#2F55A8");
-            this.btnNguoiThue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNguoiThue.Font = new System.Drawing.Font("Segoe UI Emoji", 9F);
-            this.btnNguoiThue.ForeColor = System.Drawing.Color.White;
-            this.btnNguoiThue.Location = new System.Drawing.Point(5, 109);
-            this.btnNguoiThue.Name = "btnNguoiThue";
-            this.btnNguoiThue.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnNguoiThue.Size = new System.Drawing.Size(147, 32);
-            this.btnNguoiThue.TabIndex = 3;
-            this.btnNguoiThue.Tag = "NguoiThue";
-            this.btnNguoiThue.Text = "👤  Người thuê";
-            this.btnNguoiThue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNguoiThue.UseVisualStyleBackColor = false;
-            this.btnNguoiThue.Click += new System.EventHandler(this.btnMenu_Click);
-            //
-            // btnHopDong
-            //
-            this.btnHopDong.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.btnHopDong.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHopDong.FlatAppearance.BorderSize = 0;
-            this.btnHopDong.FlatAppearance.MouseOverBackColor = System.Drawing.ColorTranslator.FromHtml("#2F55A8");
-            this.btnHopDong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHopDong.Font = new System.Drawing.Font("Segoe UI Emoji", 9F);
-            this.btnHopDong.ForeColor = System.Drawing.Color.White;
-            this.btnHopDong.Location = new System.Drawing.Point(5, 143);
-            this.btnHopDong.Name = "btnHopDong";
-            this.btnHopDong.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnHopDong.Size = new System.Drawing.Size(147, 32);
-            this.btnHopDong.TabIndex = 4;
-            this.btnHopDong.Tag = "HopDong";
-            this.btnHopDong.Text = "📄  Hợp đồng";
-            this.btnHopDong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHopDong.UseVisualStyleBackColor = false;
-            this.btnHopDong.Click += new System.EventHandler(this.btnMenu_Click);
-            //
-            // btnHoaDon
-            //
-            this.btnHoaDon.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.btnHoaDon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHoaDon.FlatAppearance.BorderSize = 0;
-            this.btnHoaDon.FlatAppearance.MouseOverBackColor = System.Drawing.ColorTranslator.FromHtml("#2F55A8");
-            this.btnHoaDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHoaDon.Font = new System.Drawing.Font("Segoe UI Emoji", 9F);
-            this.btnHoaDon.ForeColor = System.Drawing.Color.White;
-            this.btnHoaDon.Location = new System.Drawing.Point(5, 177);
-            this.btnHoaDon.Name = "btnHoaDon";
-            this.btnHoaDon.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnHoaDon.Size = new System.Drawing.Size(147, 32);
-            this.btnHoaDon.TabIndex = 5;
-            this.btnHoaDon.Tag = "HoaDon";
-            this.btnHoaDon.Text = "🧾  Hóa đơn";
-            this.btnHoaDon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHoaDon.UseVisualStyleBackColor = false;
-            this.btnHoaDon.Click += new System.EventHandler(this.btnMenu_Click);
-            //
-            // btnDichVu
-            //
-            this.btnDichVu.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.btnDichVu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDichVu.FlatAppearance.BorderSize = 0;
-            this.btnDichVu.FlatAppearance.MouseOverBackColor = System.Drawing.ColorTranslator.FromHtml("#2F55A8");
-            this.btnDichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDichVu.Font = new System.Drawing.Font("Segoe UI Emoji", 9F);
-            this.btnDichVu.ForeColor = System.Drawing.Color.White;
-            this.btnDichVu.Location = new System.Drawing.Point(5, 211);
-            this.btnDichVu.Name = "btnDichVu";
-            this.btnDichVu.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnDichVu.Size = new System.Drawing.Size(147, 32);
-            this.btnDichVu.TabIndex = 6;
-            this.btnDichVu.Tag = "DichVu";
-            this.btnDichVu.Text = "💡  Dịch vụ";
-            this.btnDichVu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDichVu.UseVisualStyleBackColor = false;
-            this.btnDichVu.Click += new System.EventHandler(this.btnMenu_Click);
-            //
+            // 
+            pnlSidebar.BackColor = Color.FromArgb(36, 70, 145);
+            pnlSidebar.Controls.Add(btnDangXuat);
+            pnlSidebar.Controls.Add(lblNguoiDung);
+            pnlSidebar.Controls.Add(btnBaoCao);
+            pnlSidebar.Controls.Add(btnDichVu);
+            pnlSidebar.Controls.Add(btnHoaDon);
+            pnlSidebar.Controls.Add(btnHopDong);
+            pnlSidebar.Controls.Add(btnNguoiThue);
+            pnlSidebar.Controls.Add(btnPhongTro);
+            pnlSidebar.Controls.Add(btnTongQuan);
+            pnlSidebar.Controls.Add(lblLogo);
+            pnlSidebar.Dock = DockStyle.Left;
+            pnlSidebar.Location = new Point(0, 0);
+            pnlSidebar.Margin = new Padding(4, 5, 4, 5);
+            pnlSidebar.Name = "pnlSidebar";
+            pnlSidebar.Size = new Size(224, 1000);
+            pnlSidebar.TabIndex = 0;
+            // 
+            // btnDangXuat
+            // 
+            btnDangXuat.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDangXuat.BackColor = Color.FromArgb(36, 70, 145);
+            btnDangXuat.Cursor = Cursors.Hand;
+            btnDangXuat.FlatAppearance.BorderSize = 0;
+            btnDangXuat.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 85, 168);
+            btnDangXuat.FlatStyle = FlatStyle.Flat;
+            btnDangXuat.Font = new Font("Segoe UI Emoji", 9F);
+            btnDangXuat.ForeColor = Color.White;
+            btnDangXuat.Location = new Point(7, 922);
+            btnDangXuat.Margin = new Padding(4, 5, 4, 5);
+            btnDangXuat.Name = "btnDangXuat";
+            btnDangXuat.Padding = new Padding(11, 0, 0, 0);
+            btnDangXuat.Size = new Size(210, 53);
+            btnDangXuat.TabIndex = 7;
+            btnDangXuat.Text = "🚪  Đăng xuất";
+            btnDangXuat.TextAlign = ContentAlignment.MiddleLeft;
+            btnDangXuat.UseVisualStyleBackColor = false;
+            btnDangXuat.Click += btnDangXuat_Click;
+            // 
+            // lblNguoiDung
+            // 
+            lblNguoiDung.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblNguoiDung.AutoEllipsis = true;
+            lblNguoiDung.Font = new Font("Segoe UI Emoji", 9F);
+            lblNguoiDung.ForeColor = Color.FromArgb(201, 213, 242);
+            lblNguoiDung.Location = new Point(0, 863);
+            lblNguoiDung.Margin = new Padding(4, 0, 4, 0);
+            lblNguoiDung.Name = "lblNguoiDung";
+            lblNguoiDung.Padding = new Padding(17, 0, 6, 0);
+            lblNguoiDung.Size = new Size(224, 50);
+            lblNguoiDung.TabIndex = 6;
+            lblNguoiDung.Text = "👤 Người dùng";
+            lblNguoiDung.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // btnBaoCao
-            //
-            this.btnBaoCao.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.btnBaoCao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBaoCao.FlatAppearance.BorderSize = 0;
-            this.btnBaoCao.FlatAppearance.MouseOverBackColor = System.Drawing.ColorTranslator.FromHtml("#2F55A8");
-            this.btnBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBaoCao.Font = new System.Drawing.Font("Segoe UI Emoji", 9F);
-            this.btnBaoCao.ForeColor = System.Drawing.Color.White;
-            this.btnBaoCao.Location = new System.Drawing.Point(5, 245);
-            this.btnBaoCao.Name = "btnBaoCao";
-            this.btnBaoCao.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnBaoCao.Size = new System.Drawing.Size(147, 32);
-            this.btnBaoCao.TabIndex = 7;
-            this.btnBaoCao.Tag = "BaoCao";
-            this.btnBaoCao.Text = "📊  Báo cáo";
-            this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBaoCao.UseVisualStyleBackColor = false;
-            this.btnBaoCao.Click += new System.EventHandler(this.btnMenu_Click);
-            //
-            // pnlContent (nơi chứa các UserControl)
-            //
-            this.pnlContent.BackColor = System.Drawing.ColorTranslator.FromHtml("#F2F4F8");
-            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(157, 0);
-            this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(843, 600);
-            this.pnlContent.TabIndex = 1;
-            //
+            // 
+            btnBaoCao.BackColor = Color.FromArgb(36, 70, 145);
+            btnBaoCao.Cursor = Cursors.Hand;
+            btnBaoCao.FlatAppearance.BorderSize = 0;
+            btnBaoCao.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 85, 168);
+            btnBaoCao.FlatStyle = FlatStyle.Flat;
+            btnBaoCao.Font = new Font("Segoe UI Emoji", 9F);
+            btnBaoCao.ForeColor = Color.White;
+            btnBaoCao.Location = new Point(7, 409);
+            btnBaoCao.Margin = new Padding(4, 5, 4, 5);
+            btnBaoCao.Name = "btnBaoCao";
+            btnBaoCao.Padding = new Padding(11, 0, 0, 0);
+            btnBaoCao.Size = new Size(210, 53);
+            btnBaoCao.TabIndex = 9;
+            btnBaoCao.Tag = "BaoCao";
+            btnBaoCao.Text = "\U0001f4ca  Báo cáo";
+            btnBaoCao.TextAlign = ContentAlignment.MiddleLeft;
+            btnBaoCao.UseVisualStyleBackColor = false;
+            btnBaoCao.Click += btnMenu_Click;
+            // 
+            // btnDichVu
+            // 
+            btnDichVu.BackColor = Color.FromArgb(36, 70, 145);
+            btnDichVu.Cursor = Cursors.Hand;
+            btnDichVu.FlatAppearance.BorderSize = 0;
+            btnDichVu.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 85, 168);
+            btnDichVu.FlatStyle = FlatStyle.Flat;
+            btnDichVu.Font = new Font("Segoe UI Emoji", 9F);
+            btnDichVu.ForeColor = Color.White;
+            btnDichVu.Location = new Point(7, 352);
+            btnDichVu.Margin = new Padding(4, 5, 4, 5);
+            btnDichVu.Name = "btnDichVu";
+            btnDichVu.Padding = new Padding(11, 0, 0, 0);
+            btnDichVu.Size = new Size(210, 53);
+            btnDichVu.TabIndex = 8;
+            btnDichVu.Tag = "DichVu";
+            btnDichVu.Text = "\U0001f4a1  Dịch vụ";
+            btnDichVu.TextAlign = ContentAlignment.MiddleLeft;
+            btnDichVu.UseVisualStyleBackColor = false;
+            btnDichVu.Click += btnMenu_Click;
+            // 
+            // btnHoaDon
+            // 
+            btnHoaDon.BackColor = Color.FromArgb(36, 70, 145);
+            btnHoaDon.Cursor = Cursors.Hand;
+            btnHoaDon.FlatAppearance.BorderSize = 0;
+            btnHoaDon.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 85, 168);
+            btnHoaDon.FlatStyle = FlatStyle.Flat;
+            btnHoaDon.Font = new Font("Segoe UI Emoji", 9F);
+            btnHoaDon.ForeColor = Color.White;
+            btnHoaDon.Location = new Point(7, 295);
+            btnHoaDon.Margin = new Padding(4, 5, 4, 5);
+            btnHoaDon.Name = "btnHoaDon";
+            btnHoaDon.Padding = new Padding(11, 0, 0, 0);
+            btnHoaDon.Size = new Size(210, 53);
+            btnHoaDon.TabIndex = 5;
+            btnHoaDon.Tag = "HoaDon";
+            btnHoaDon.Text = "\U0001f9fe  Hóa đơn";
+            btnHoaDon.TextAlign = ContentAlignment.MiddleLeft;
+            btnHoaDon.UseVisualStyleBackColor = false;
+            btnHoaDon.Click += btnMenu_Click;
+            // 
+            // btnHopDong
+            // 
+            btnHopDong.BackColor = Color.FromArgb(36, 70, 145);
+            btnHopDong.Cursor = Cursors.Hand;
+            btnHopDong.FlatAppearance.BorderSize = 0;
+            btnHopDong.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 85, 168);
+            btnHopDong.FlatStyle = FlatStyle.Flat;
+            btnHopDong.Font = new Font("Segoe UI Emoji", 9F);
+            btnHopDong.ForeColor = Color.White;
+            btnHopDong.Location = new Point(7, 238);
+            btnHopDong.Margin = new Padding(4, 5, 4, 5);
+            btnHopDong.Name = "btnHopDong";
+            btnHopDong.Padding = new Padding(11, 0, 0, 0);
+            btnHopDong.Size = new Size(210, 53);
+            btnHopDong.TabIndex = 4;
+            btnHopDong.Tag = "HopDong";
+            btnHopDong.Text = "📄  Hợp đồng";
+            btnHopDong.TextAlign = ContentAlignment.MiddleLeft;
+            btnHopDong.UseVisualStyleBackColor = false;
+            btnHopDong.Click += btnMenu_Click;
+            // 
+            // btnNguoiThue
+            // 
+            btnNguoiThue.BackColor = Color.FromArgb(36, 70, 145);
+            btnNguoiThue.Cursor = Cursors.Hand;
+            btnNguoiThue.FlatAppearance.BorderSize = 0;
+            btnNguoiThue.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 85, 168);
+            btnNguoiThue.FlatStyle = FlatStyle.Flat;
+            btnNguoiThue.Font = new Font("Segoe UI Emoji", 9F);
+            btnNguoiThue.ForeColor = Color.White;
+            btnNguoiThue.Location = new Point(7, 182);
+            btnNguoiThue.Margin = new Padding(4, 5, 4, 5);
+            btnNguoiThue.Name = "btnNguoiThue";
+            btnNguoiThue.Padding = new Padding(11, 0, 0, 0);
+            btnNguoiThue.Size = new Size(210, 53);
+            btnNguoiThue.TabIndex = 3;
+            btnNguoiThue.Tag = "NguoiThue";
+            btnNguoiThue.Text = "👤  Người thuê";
+            btnNguoiThue.TextAlign = ContentAlignment.MiddleLeft;
+            btnNguoiThue.UseVisualStyleBackColor = false;
+            btnNguoiThue.Click += btnMenu_Click;
+            // 
+            // btnPhongTro
+            // 
+            btnPhongTro.BackColor = Color.FromArgb(36, 70, 145);
+            btnPhongTro.Cursor = Cursors.Hand;
+            btnPhongTro.FlatAppearance.BorderSize = 0;
+            btnPhongTro.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 85, 168);
+            btnPhongTro.FlatStyle = FlatStyle.Flat;
+            btnPhongTro.Font = new Font("Segoe UI Emoji", 9F);
+            btnPhongTro.ForeColor = Color.White;
+            btnPhongTro.Location = new Point(7, 125);
+            btnPhongTro.Margin = new Padding(4, 5, 4, 5);
+            btnPhongTro.Name = "btnPhongTro";
+            btnPhongTro.Padding = new Padding(11, 0, 0, 0);
+            btnPhongTro.Size = new Size(210, 53);
+            btnPhongTro.TabIndex = 2;
+            btnPhongTro.Tag = "PhongTro";
+            btnPhongTro.Text = "🏢  Phòng trọ";
+            btnPhongTro.TextAlign = ContentAlignment.MiddleLeft;
+            btnPhongTro.UseVisualStyleBackColor = false;
+            btnPhongTro.Click += btnMenu_Click;
+            // 
+            // btnTongQuan
+            // 
+            btnTongQuan.BackColor = Color.FromArgb(59, 91, 192);
+            btnTongQuan.Cursor = Cursors.Hand;
+            btnTongQuan.FlatAppearance.BorderSize = 0;
+            btnTongQuan.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 91, 192);
+            btnTongQuan.FlatStyle = FlatStyle.Flat;
+            btnTongQuan.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Bold);
+            btnTongQuan.ForeColor = Color.White;
+            btnTongQuan.Location = new Point(7, 68);
+            btnTongQuan.Margin = new Padding(4, 5, 4, 5);
+            btnTongQuan.Name = "btnTongQuan";
+            btnTongQuan.Padding = new Padding(11, 0, 0, 0);
+            btnTongQuan.Size = new Size(210, 53);
+            btnTongQuan.TabIndex = 1;
+            btnTongQuan.Tag = "TongQuan";
+            btnTongQuan.Text = "▦  Tổng quan";
+            btnTongQuan.TextAlign = ContentAlignment.MiddleLeft;
+            btnTongQuan.UseVisualStyleBackColor = false;
+            btnTongQuan.Click += btnMenu_Click;
+            // 
+            // lblLogo
+            // 
+            lblLogo.Font = new Font("Segoe UI Emoji", 11F, FontStyle.Bold);
+            lblLogo.ForeColor = Color.White;
+            lblLogo.Location = new Point(0, 0);
+            lblLogo.Margin = new Padding(4, 0, 4, 0);
+            lblLogo.Name = "lblLogo";
+            lblLogo.Padding = new Padding(17, 0, 0, 0);
+            lblLogo.Size = new Size(224, 63);
+            lblLogo.TabIndex = 0;
+            lblLogo.Text = "🏠 Phòng trọ mini";
+            lblLogo.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pnlContent
+            // 
+            pnlContent.BackColor = Color.FromArgb(242, 244, 248);
+            pnlContent.Dock = DockStyle.Fill;
+            pnlContent.Location = new Point(224, 0);
+            pnlContent.Margin = new Padding(4, 5, 4, 5);
+            pnlContent.Name = "pnlContent";
+            pnlContent.Size = new Size(1205, 1000);
+            pnlContent.TabIndex = 1;
+            pnlContent.Paint += pnlContent_Paint;
+            // 
             // MainForm
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 600);
-            this.Controls.Add(this.pnlContent);
-            this.Controls.Add(this.pnlSidebar);
-            this.MinimumSize = new System.Drawing.Size(900, 500);
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Phòng trọ mini";
-            this.pnlSidebar.ResumeLayout(false);
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1429, 1000);
+            Controls.Add(pnlContent);
+            Controls.Add(pnlSidebar);
+            Margin = new Padding(4, 5, 4, 5);
+            MinimumSize = new Size(1276, 796);
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Phòng trọ mini";
+            pnlSidebar.ResumeLayout(false);
+            ResumeLayout(false);
+        }
+
+        // ===== Giao diện menu: màu và trạng thái nút đang chọn =====
+        private readonly System.Drawing.Color _normal = System.Drawing.ColorTranslator.FromHtml("#244691");
+        private readonly System.Drawing.Color _hover = System.Drawing.ColorTranslator.FromHtml("#2F55A8");
+        private readonly System.Drawing.Color _active = System.Drawing.ColorTranslator.FromHtml("#3B5BC0");
+        private System.Windows.Forms.Button _current; // nút menu đang được chọn
+
+        // Nút cũ về màu thường, nút mới sang màu đậm + chữ đậm
+        private void SetActiveButton(System.Windows.Forms.Button btn)
+        {
+            if (_current != null)
+            {
+                _current.BackColor = _normal;
+                _current.Font = new System.Drawing.Font(_current.Font, System.Drawing.FontStyle.Regular);
+                _current.FlatAppearance.MouseOverBackColor = _hover;
+            }
+            btn.BackColor = _active;
+            btn.Font = new System.Drawing.Font(btn.Font, System.Drawing.FontStyle.Bold);
+            btn.FlatAppearance.MouseOverBackColor = _active;
+            _current = btn;
         }
 
         private System.Windows.Forms.Panel pnlSidebar;
@@ -227,8 +300,13 @@
         private System.Windows.Forms.Button btnNguoiThue;
         private System.Windows.Forms.Button btnHopDong;
         private System.Windows.Forms.Button btnHoaDon;
+
+        private System.Windows.Forms.Label lblNguoiDung;
+        private System.Windows.Forms.Button btnDangXuat;
+
         private System.Windows.Forms.Button btnDichVu;
         private System.Windows.Forms.Button btnBaoCao;
+
         private System.Windows.Forms.Panel pnlContent;
     }
 }

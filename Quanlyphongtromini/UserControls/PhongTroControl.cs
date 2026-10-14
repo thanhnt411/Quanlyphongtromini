@@ -12,7 +12,7 @@ using System.Windows.Forms;
     public partial class PhongTroControl : UserControl
     {
         // Chuỗi kết nối tới SQL Server (dùng chung cho mọi nút)
-        private string connectionString = @"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+        private string connectionString = @"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public PhongTroControl()
         {
