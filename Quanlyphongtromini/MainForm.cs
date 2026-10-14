@@ -39,6 +39,7 @@ namespace Quanlyphongtromini
                  case "NguoiThue": LoadPage(new NguoiThueControl()); break;
                  case "HopDong":   LoadPage(new HopDongControl());   break;
                  case "HoaDon":    LoadPage(new HoaDonControl());    break;
+                 case "BaoCao":    LoadPage(new BaoCaoControl()); break;
             }
         }
 
