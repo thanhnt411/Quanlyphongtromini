@@ -65,3 +65,15 @@ CREATE TABLE HoaDon (
     CONSTRAINT CK_HoaDon_NuocMoi CHECK (NuocMoi >= NuocCu)
 );
 GO
+
+-- 5. Bảng TaiKhoan
+
+CREATE TABLE TaiKhoan (
+    MaTK          INT IDENTITY(1,1) PRIMARY KEY,
+    TenDangNhap   VARCHAR(50)    NOT NULL UNIQUE,
+    Email         VARCHAR(100)   NOT NULL UNIQUE,
+    SoDienThoai   VARCHAR(11)    NOT NULL,
+    MatKhau       NVARCHAR(255)  NOT NULL,          
+    NgayTao       DATETIME       NOT NULL DEFAULT GETDATE()
+);
+GO
