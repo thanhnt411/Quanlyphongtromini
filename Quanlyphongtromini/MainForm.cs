@@ -27,11 +27,13 @@ namespace Quanlyphongtromini
 
             switch (btn.Tag.ToString())
             {
-                case "TongQuan": LoadPage(new DashboardControl()); break;
-                case "PhongTro": LoadPage(new PhongTroControl()); break;
-                case "NguoiThue": LoadPage(new NguoiThueControl()); break;
-                case "HopDong": LoadPage(new HopDongControl()); break;
-                case "HoaDon": LoadPage(new HoaDonControl()); break;
+                 case "TongQuan":  LoadPage(new DashboardControl());  break;
+                 case "PhongTro":  LoadPage(new PhongTroControl());  break;
+                 case "NguoiThue": LoadPage(new NguoiThueControl()); break;
+                 case "HopDong":   LoadPage(new HopDongControl());   break;
+                 case "HoaDon":    LoadPage(new HoaDonControl());    break;
+                 case "DichVu":    LoadPage(new DichVuControl()); break;
+                 case "BaoCao":    LoadPage(new BaoCaoControl()); break;
             }
         }
 

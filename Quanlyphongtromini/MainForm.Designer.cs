@@ -1,4 +1,4 @@
-﻿namespace Quanlyphongtromini
+namespace Quanlyphongtromini
 {
     partial class MainForm
     {
@@ -17,6 +17,8 @@
             pnlSidebar = new Panel();
             btnDangXuat = new Button();
             lblNguoiDung = new Label();
+            btnBaoCao = new Button();
+            btnDichVu = new Button();
             btnHoaDon = new Button();
             btnHopDong = new Button();
             btnNguoiThue = new Button();
@@ -32,6 +34,8 @@
             pnlSidebar.BackColor = Color.FromArgb(36, 70, 145);
             pnlSidebar.Controls.Add(btnDangXuat);
             pnlSidebar.Controls.Add(lblNguoiDung);
+            pnlSidebar.Controls.Add(btnBaoCao);
+            pnlSidebar.Controls.Add(btnDichVu);
             pnlSidebar.Controls.Add(btnHoaDon);
             pnlSidebar.Controls.Add(btnHopDong);
             pnlSidebar.Controls.Add(btnNguoiThue);
@@ -80,6 +84,48 @@
             lblNguoiDung.TabIndex = 6;
             lblNguoiDung.Text = "👤 Người dùng";
             lblNguoiDung.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // btnBaoCao
+            // 
+            btnBaoCao.BackColor = Color.FromArgb(36, 70, 145);
+            btnBaoCao.Cursor = Cursors.Hand;
+            btnBaoCao.FlatAppearance.BorderSize = 0;
+            btnBaoCao.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 85, 168);
+            btnBaoCao.FlatStyle = FlatStyle.Flat;
+            btnBaoCao.Font = new Font("Segoe UI Emoji", 9F);
+            btnBaoCao.ForeColor = Color.White;
+            btnBaoCao.Location = new Point(7, 409);
+            btnBaoCao.Margin = new Padding(4, 5, 4, 5);
+            btnBaoCao.Name = "btnBaoCao";
+            btnBaoCao.Padding = new Padding(11, 0, 0, 0);
+            btnBaoCao.Size = new Size(210, 53);
+            btnBaoCao.TabIndex = 9;
+            btnBaoCao.Tag = "BaoCao";
+            btnBaoCao.Text = "\U0001f4ca  Báo cáo";
+            btnBaoCao.TextAlign = ContentAlignment.MiddleLeft;
+            btnBaoCao.UseVisualStyleBackColor = false;
+            btnBaoCao.Click += btnMenu_Click;
+            // 
+            // btnDichVu
+            // 
+            btnDichVu.BackColor = Color.FromArgb(36, 70, 145);
+            btnDichVu.Cursor = Cursors.Hand;
+            btnDichVu.FlatAppearance.BorderSize = 0;
+            btnDichVu.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 85, 168);
+            btnDichVu.FlatStyle = FlatStyle.Flat;
+            btnDichVu.Font = new Font("Segoe UI Emoji", 9F);
+            btnDichVu.ForeColor = Color.White;
+            btnDichVu.Location = new Point(7, 352);
+            btnDichVu.Margin = new Padding(4, 5, 4, 5);
+            btnDichVu.Name = "btnDichVu";
+            btnDichVu.Padding = new Padding(11, 0, 0, 0);
+            btnDichVu.Size = new Size(210, 53);
+            btnDichVu.TabIndex = 8;
+            btnDichVu.Tag = "DichVu";
+            btnDichVu.Text = "\U0001f4a1  Dịch vụ";
+            btnDichVu.TextAlign = ContentAlignment.MiddleLeft;
+            btnDichVu.UseVisualStyleBackColor = false;
+            btnDichVu.Click += btnMenu_Click;
             // 
             // btnHoaDon
             // 
@@ -254,8 +300,13 @@
         private System.Windows.Forms.Button btnNguoiThue;
         private System.Windows.Forms.Button btnHopDong;
         private System.Windows.Forms.Button btnHoaDon;
+
         private System.Windows.Forms.Label lblNguoiDung;
         private System.Windows.Forms.Button btnDangXuat;
+
+        private System.Windows.Forms.Button btnDichVu;
+        private System.Windows.Forms.Button btnBaoCao;
+
         private System.Windows.Forms.Panel pnlContent;
     }
 }

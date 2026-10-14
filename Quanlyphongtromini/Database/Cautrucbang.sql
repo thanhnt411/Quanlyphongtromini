@@ -66,6 +66,7 @@ CREATE TABLE HoaDon (
 );
 GO
 
+
 -- 5. Bảng TaiKhoan
 
 CREATE TABLE TaiKhoan (
@@ -77,3 +78,12 @@ CREATE TABLE TaiKhoan (
     NgayTao       DATETIME       NOT NULL DEFAULT GETDATE()
 );
 GO
+
+-- 6. Bảng DichVu
+CREATE TABLE DichVu (
+    MaDV        NVARCHAR(50)    PRIMARY KEY,           -- Mã dịch vụ
+    TenDV       NVARCHAR(50),                          -- Tên dịch vụ
+    DonGia      DECIMAL(10,0)                          -- Đơn giá
+);
+GO
+
