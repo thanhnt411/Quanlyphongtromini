@@ -65,3 +65,11 @@ CREATE TABLE HoaDon (
     CONSTRAINT CK_HoaDon_NuocMoi CHECK (NuocMoi >= NuocCu)
 );
 GO
+
+-- 5. Bảng DichVu
+CREATE TABLE DichVu (
+    MaDV        NVARCHAR(50)    PRIMARY KEY,           -- Mã dịch vụ
+    TenDV       NVARCHAR(50),                          -- Tên dịch vụ
+    DonGia      DECIMAL(10,0)                          -- Đơn giá
+);
+GO
