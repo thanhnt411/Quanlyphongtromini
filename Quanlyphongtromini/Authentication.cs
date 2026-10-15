@@ -7,7 +7,8 @@ namespace Quanlyphongtromini.Services
     public static class AuthService
     {
         private const string connectionString =
-           @"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+            @"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+        //@"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
 
         // Tên người đang đăng nhập (null = chưa đăng nhập); MainForm đọc để hiện ở sidebar
         public static string TenDangNhap { get; private set; }
