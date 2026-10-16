@@ -12,7 +12,7 @@ using System.Windows.Forms;
     public partial class PhongTroControl : UserControl
     {
         // Chuỗi kết nối tới SQL Server (dùng chung cho mọi nút)
-        private string connectionString = @"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+        private string connectionString = @"Data Source=localhost;Initial Catalog=QLPhongTro;User ID=sa;password = 123456; Trust Server Certificate=True;";
 
         public PhongTroControl()
         {
@@ -33,6 +33,7 @@ using System.Windows.Forms;
                               OR CONVERT(NVARCHAR(50), DienTich) LIKE @kw
                               OR CONVERT(NVARCHAR(50), GiaPhong) LIKE @kw
                               OR CONVERT(NVARCHAR(50), ToiDa) LIKE @kw
+                              OR CONVERT(NVARCHAR(50), HienTai) LIKE @kw
                               OR TrangThai LIKE @kw";
                 }
                 sql += " ORDER BY MaPhong";
@@ -72,6 +73,16 @@ using System.Windows.Forms;
                 MessageBox.Show("Số người tối đa phải là số nguyên lớn hơn 0!");
                 return false;
             }
+            if (!int.TryParse(txtHienTai.Text.Trim(), out int hienTai) || hienTai < 0)
+            {
+                MessageBox.Show("Số người hiện tại phải là số nguyên không âm!");
+                return false;
+            }
+            if (hienTai > toiDa)
+            {
+                MessageBox.Show("Số người hiện tại không được vượt quá số người tối đa!");
+                return false;
+            }
             if (cboTrangThai.Text.Trim() == "")
             {
                 MessageBox.Show("Vui lòng chọn trạng thái!");
@@ -88,6 +99,7 @@ using System.Windows.Forms;
             txtDienTich.Clear();
             txtGiaPhong.Clear();
             txtToiDa.Clear();
+            txtHienTai.Clear();
             cboTrangThai.SelectedIndex = -1;
             txtMaPhong.Focus();
         }
@@ -123,8 +135,8 @@ using System.Windows.Forms;
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string sql = @"INSERT INTO PhongTro (MaPhong, TenPhong, DienTich, GiaPhong, ToiDa, TrangThai)
-                                   VALUES (@MaPhong, @TenPhong, @DienTich, @GiaPhong, @ToiDa, @TrangThai)";
+                    string sql = @"INSERT INTO PhongTro (MaPhong, TenPhong, DienTich, GiaPhong, ToiDa, HienTai, TrangThai)
+                                   VALUES (@MaPhong, @TenPhong, @DienTich, @GiaPhong, @ToiDa, @HienTai, @TrangThai)";
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@MaPhong", txtMaPhong.Text.Trim());
@@ -132,6 +144,7 @@ using System.Windows.Forms;
                         cmd.Parameters.AddWithValue("@DienTich", decimal.Parse(txtDienTich.Text.Trim()));
                         cmd.Parameters.AddWithValue("@GiaPhong", decimal.Parse(txtGiaPhong.Text.Trim()));
                         cmd.Parameters.AddWithValue("@ToiDa", int.Parse(txtToiDa.Text.Trim()));
+                        cmd.Parameters.AddWithValue("@HienTai", txtHienTai.Text.Trim());
                         cmd.Parameters.AddWithValue("@TrangThai", cboTrangThai.Text.Trim());
                         cmd.ExecuteNonQuery();
                     }
@@ -167,7 +180,7 @@ using System.Windows.Forms;
                     conn.Open();
                     string sql = @"UPDATE PhongTro
                                    SET TenPhong = @TenPhong, DienTich = @DienTich, GiaPhong = @GiaPhong,
-                                       ToiDa = @ToiDa, TrangThai = @TrangThai
+                                       ToiDa = @ToiDa, HienTai = @HienTai, TrangThai = @TrangThai
                                    WHERE MaPhong = @MaPhong";
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
@@ -176,6 +189,7 @@ using System.Windows.Forms;
                         cmd.Parameters.AddWithValue("@DienTich", decimal.Parse(txtDienTich.Text.Trim()));
                         cmd.Parameters.AddWithValue("@GiaPhong", decimal.Parse(txtGiaPhong.Text.Trim()));
                         cmd.Parameters.AddWithValue("@ToiDa", int.Parse(txtToiDa.Text.Trim()));
+                        cmd.Parameters.AddWithValue("@HienTai", txtHienTai.Text.Trim());
                         cmd.Parameters.AddWithValue("@TrangThai", cboTrangThai.Text.Trim());
 
                         if (cmd.ExecuteNonQuery() == 0)
@@ -250,7 +264,8 @@ using System.Windows.Forms;
             txtDienTich.Text = dgvPhongTro.Rows[i].Cells[2].Value.ToString();
             txtGiaPhong.Text = dgvPhongTro.Rows[i].Cells[3].Value.ToString();
             txtToiDa.Text = dgvPhongTro.Rows[i].Cells[4].Value.ToString();
-            cboTrangThai.Text = dgvPhongTro.Rows[i].Cells[5].Value.ToString();
+            txtHienTai.Text = dgvPhongTro.Rows[i].Cells[5].Value.ToString();
+            cboTrangThai.Text = dgvPhongTro.Rows[i].Cells[6].Value.ToString();
         }
     }
 }

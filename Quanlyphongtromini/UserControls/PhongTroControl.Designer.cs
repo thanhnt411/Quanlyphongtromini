@@ -26,6 +26,7 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tlpMain = new TableLayoutPanel();
             pnlTimKiem = new Panel();
@@ -36,6 +37,7 @@
             colTenPhong = new DataGridViewTextBoxColumn();
             colDienTich = new DataGridViewTextBoxColumn();
             colGiaPhong = new DataGridViewTextBoxColumn();
+            colHienTai = new DataGridViewTextBoxColumn();
             colToiDa = new DataGridViewTextBoxColumn();
             colTrangThai = new DataGridViewTextBoxColumn();
             pnlThongTin = new Panel();
@@ -52,6 +54,8 @@
             lblTrangThai = new Label();
             txtToiDa = new TextBox();
             cboTrangThai = new ComboBox();
+            lblHienTai = new Label();
+            txtHienTai = new TextBox();
             flpNut = new FlowLayoutPanel();
             btnLamMoi = new Button();
             btnXoa = new Button();
@@ -79,8 +83,8 @@
             tlpMain.RowCount = 3;
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 400F));
-            tlpMain.Size = new Size(1150, 944);
+            tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 500F));
+            tlpMain.Size = new Size(1150, 1044);
             tlpMain.TabIndex = 0;
             // 
             // pnlTimKiem
@@ -145,7 +149,7 @@
             dgvPhongTro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPhongTro.ColumnHeadersHeight = 34;
             dgvPhongTro.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvPhongTro.Columns.AddRange(new DataGridViewColumn[] { colMaPhong, colTenPhong, colDienTich, colGiaPhong, colToiDa, colTrangThai });
+            dgvPhongTro.Columns.AddRange(new DataGridViewColumn[] { colMaPhong, colTenPhong, colDienTich, colGiaPhong, colHienTai, colToiDa, colTrangThai });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
@@ -207,6 +211,16 @@
             colGiaPhong.Name = "colGiaPhong";
             colGiaPhong.ReadOnly = true;
             // 
+            // colHienTai
+            // 
+            colHienTai.DataPropertyName = "HienTai";
+            dataGridViewCellStyle6.Format = "0 \"người\"";
+            colHienTai.DefaultCellStyle = dataGridViewCellStyle6;
+            colHienTai.HeaderText = "HIỆN TẠI";
+            colHienTai.MinimumWidth = 8;
+            colHienTai.Name = "colHienTai";
+            colHienTai.ReadOnly = true;
+            // 
             // colToiDa
             // 
             colToiDa.DataPropertyName = "ToiDa";
@@ -235,7 +249,7 @@
             pnlThongTin.Margin = new Padding(0);
             pnlThongTin.Name = "pnlThongTin";
             pnlThongTin.Padding = new Padding(17, 13, 17, 13);
-            pnlThongTin.Size = new Size(1150, 400);
+            pnlThongTin.Size = new Size(1150, 500);
             pnlThongTin.TabIndex = 2;
             // 
             // tlpThongTin
@@ -255,18 +269,22 @@
             tlpThongTin.Controls.Add(lblTrangThai, 1, 4);
             tlpThongTin.Controls.Add(txtToiDa, 0, 5);
             tlpThongTin.Controls.Add(cboTrangThai, 1, 5);
+            tlpThongTin.Controls.Add(lblHienTai, 0, 6);
+            tlpThongTin.Controls.Add(txtHienTai, 0, 7);
             tlpThongTin.Dock = DockStyle.Fill;
             tlpThongTin.Location = new Point(17, 13);
             tlpThongTin.Margin = new Padding(4, 5, 4, 5);
             tlpThongTin.Name = "tlpThongTin";
-            tlpThongTin.RowCount = 6;
+            tlpThongTin.RowCount = 8;
             tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 57F));
             tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 57F));
             tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 57F));
-            tlpThongTin.Size = new Size(1116, 301);
+            tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
+            tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 57F));
+            tlpThongTin.Size = new Size(1116, 401);
             tlpThongTin.TabIndex = 0;
             // 
             // lblMaPhong
@@ -415,6 +433,30 @@
             cboTrangThai.Size = new Size(541, 36);
             cboTrangThai.TabIndex = 11;
             // 
+            // lblHienTai
+            // 
+            lblHienTai.Dock = DockStyle.Fill;
+            lblHienTai.Font = new Font("Segoe UI", 8F);
+            lblHienTai.ForeColor = Color.FromArgb(107, 114, 128);
+            lblHienTai.Location = new Point(4, 282);
+            lblHienTai.Margin = new Padding(4, 0, 4, 0);
+            lblHienTai.Name = "lblHienTai";
+            lblHienTai.Size = new Size(550, 37);
+            lblHienTai.TabIndex = 12;
+            lblHienTai.Text = "Hiện tại (người)";
+            lblHienTai.TextAlign = ContentAlignment.BottomLeft;
+            // 
+            // txtHienTai
+            // 
+            txtHienTai.BorderStyle = BorderStyle.FixedSingle;
+            txtHienTai.Dock = DockStyle.Top;
+            txtHienTai.Font = new Font("Segoe UI", 10F);
+            txtHienTai.Location = new Point(0, 324);
+            txtHienTai.Margin = new Padding(0, 5, 17, 5);
+            txtHienTai.Name = "txtHienTai";
+            txtHienTai.Size = new Size(541, 34);
+            txtHienTai.TabIndex = 13;
+            // 
             // flpNut
             // 
             flpNut.Controls.Add(btnLamMoi);
@@ -423,7 +465,7 @@
             flpNut.Controls.Add(btnThem);
             flpNut.Dock = DockStyle.Bottom;
             flpNut.FlowDirection = FlowDirection.RightToLeft;
-            flpNut.Location = new Point(17, 314);
+            flpNut.Location = new Point(17, 414);
             flpNut.Margin = new Padding(4, 5, 4, 5);
             flpNut.Name = "flpNut";
             flpNut.Size = new Size(1116, 73);
@@ -507,7 +549,7 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "PhongTroControl";
             Padding = new Padding(27, 28, 27, 28);
-            Size = new Size(1204, 1000);
+            Size = new Size(1204, 1100);
             Load += PhongTroControl_Load;
             tlpMain.ResumeLayout(false);
             pnlTimKiem.ResumeLayout(false);
@@ -539,6 +581,8 @@
         private System.Windows.Forms.Label lblTrangThai;
         private System.Windows.Forms.TextBox txtToiDa;
         private System.Windows.Forms.ComboBox cboTrangThai;
+        private System.Windows.Forms.Label lblHienTai;
+        private System.Windows.Forms.TextBox txtHienTai;
         private System.Windows.Forms.FlowLayoutPanel flpNut;
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.Button btnXoa;
@@ -548,6 +592,7 @@
         private DataGridViewTextBoxColumn colTenPhong;
         private DataGridViewTextBoxColumn colDienTich;
         private DataGridViewTextBoxColumn colGiaPhong;
+        private DataGridViewTextBoxColumn colHienTai;
         private DataGridViewTextBoxColumn colToiDa;
         private DataGridViewTextBoxColumn colTrangThai;
     }
