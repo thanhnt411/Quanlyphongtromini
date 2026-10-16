@@ -12,7 +12,7 @@ using System.Windows.Forms;
     public partial class PhongTroControl : UserControl
     {
         private string connectionString =
-            @"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+           @"Data Source=localhost;Initial Catalog=QLPhongTro;User ID=sa;password = 123456;Trust Server Certificate=True;";
         //@"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public PhongTroControl()
