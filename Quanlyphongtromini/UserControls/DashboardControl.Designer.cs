@@ -22,220 +22,231 @@
 
         private void InitializeComponent()
         {
-            this.tlpCards = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlTongPhong = new System.Windows.Forms.Panel();
-            this.lblTongPhong = new System.Windows.Forms.Label();
-            this.lblTongPhongTitle = new System.Windows.Forms.Label();
-            this.pnlDangThue = new System.Windows.Forms.Panel();
-            this.lblDangThue = new System.Windows.Forms.Label();
-            this.lblDangThueTitle = new System.Windows.Forms.Label();
-            this.pnlPhongTrong = new System.Windows.Forms.Panel();
-            this.lblPhongTrong = new System.Windows.Forms.Label();
-            this.lblPhongTrongTitle = new System.Windows.Forms.Label();
-            this.pnlDoanhThu = new System.Windows.Forms.Panel();
-            this.lblDoanhThu = new System.Windows.Forms.Label();
-            this.lblDoanhThuTitle = new System.Windows.Forms.Label();
-            this.pnlChart = new System.Windows.Forms.Panel();
-            this.lblChart = new System.Windows.Forms.Label();
-            this.tlpCards.SuspendLayout();
-            this.pnlTongPhong.SuspendLayout();
-            this.pnlDangThue.SuspendLayout();
-            this.pnlPhongTrong.SuspendLayout();
-            this.pnlDoanhThu.SuspendLayout();
-            this.pnlChart.SuspendLayout();
-            this.SuspendLayout();
-            //
+            tlpCards = new TableLayoutPanel();
+            pnlTongPhong = new Panel();
+            lblTongPhong = new Label();
+            lblTongPhongTitle = new Label();
+            pnlDangThue = new Panel();
+            lblDangThue = new Label();
+            lblDangThueTitle = new Label();
+            pnlPhongTrong = new Panel();
+            lblPhongTrong = new Label();
+            lblPhongTrongTitle = new Label();
+            pnlDoanhThu = new Panel();
+            lblDoanhThu = new Label();
+            lblDoanhThuTitle = new Label();
+            pnlChart = new Panel();
+            lblChart = new Label();
+            tlpCards.SuspendLayout();
+            pnlTongPhong.SuspendLayout();
+            pnlDangThue.SuspendLayout();
+            pnlPhongTrong.SuspendLayout();
+            pnlDoanhThu.SuspendLayout();
+            pnlChart.SuspendLayout();
+            SuspendLayout();
+            // 
             // tlpCards
-            //
-            this.tlpCards.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpCards.BackColor = System.Drawing.Color.Transparent;
-            this.tlpCards.ColumnCount = 4;
-            this.tlpCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpCards.Controls.Add(this.pnlTongPhong, 0, 0);
-            this.tlpCards.Controls.Add(this.pnlDangThue, 1, 0);
-            this.tlpCards.Controls.Add(this.pnlPhongTrong, 2, 0);
-            this.tlpCards.Controls.Add(this.pnlDoanhThu, 3, 0);
-            this.tlpCards.Location = new System.Drawing.Point(19, 17);
-            this.tlpCards.Margin = new System.Windows.Forms.Padding(0);
-            this.tlpCards.Name = "tlpCards";
-            this.tlpCards.RowCount = 1;
-            this.tlpCards.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpCards.Size = new System.Drawing.Size(805, 56);
-            this.tlpCards.TabIndex = 0;
-            //
+            // 
+            tlpCards.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tlpCards.BackColor = Color.Transparent;
+            tlpCards.ColumnCount = 4;
+            tlpCards.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tlpCards.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tlpCards.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tlpCards.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tlpCards.Controls.Add(pnlTongPhong, 0, 0);
+            tlpCards.Controls.Add(pnlDangThue, 1, 0);
+            tlpCards.Controls.Add(pnlPhongTrong, 2, 0);
+            tlpCards.Controls.Add(pnlDoanhThu, 3, 0);
+            tlpCards.Location = new Point(22, 23);
+            tlpCards.Margin = new Padding(0);
+            tlpCards.Name = "tlpCards";
+            tlpCards.RowCount = 1;
+            tlpCards.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpCards.Size = new Size(920, 75);
+            tlpCards.TabIndex = 0;
+            // 
             // pnlTongPhong
-            //
-            this.pnlTongPhong.BackColor = System.Drawing.Color.White;
-            this.pnlTongPhong.Controls.Add(this.lblTongPhong);
-            this.pnlTongPhong.Controls.Add(this.lblTongPhongTitle);
-            this.pnlTongPhong.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTongPhong.Location = new System.Drawing.Point(0, 0);
-            this.pnlTongPhong.Margin = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.pnlTongPhong.Name = "pnlTongPhong";
-            this.pnlTongPhong.Size = new System.Drawing.Size(190, 56);
-            this.pnlTongPhong.TabIndex = 0;
-            //
-            // lblTongPhongTitle
-            //
-            this.lblTongPhongTitle.AutoSize = true;
-            this.lblTongPhongTitle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lblTongPhongTitle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblTongPhongTitle.Location = new System.Drawing.Point(12, 8);
-            this.lblTongPhongTitle.Name = "lblTongPhongTitle";
-            this.lblTongPhongTitle.TabIndex = 0;
-            this.lblTongPhongTitle.Text = "Tổng số phòng";
-            //
+            // 
+            pnlTongPhong.BackColor = Color.White;
+            pnlTongPhong.Controls.Add(lblTongPhong);
+            pnlTongPhong.Controls.Add(lblTongPhongTitle);
+            pnlTongPhong.Dock = DockStyle.Fill;
+            pnlTongPhong.Location = new Point(0, 0);
+            pnlTongPhong.Margin = new Padding(0, 0, 13, 0);
+            pnlTongPhong.Name = "pnlTongPhong";
+            pnlTongPhong.Size = new Size(217, 75);
+            pnlTongPhong.TabIndex = 0;
+            // 
             // lblTongPhong
-            //
-            this.lblTongPhong.AutoSize = true;
-            this.lblTongPhong.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblTongPhong.ForeColor = System.Drawing.ColorTranslator.FromHtml("#111827");
-            this.lblTongPhong.Location = new System.Drawing.Point(10, 24);
-            this.lblTongPhong.Name = "lblTongPhong";
-            this.lblTongPhong.TabIndex = 1;
-            this.lblTongPhong.Text = "3";
-            //
+            // 
+            lblTongPhong.AutoSize = true;
+            lblTongPhong.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblTongPhong.ForeColor = Color.FromArgb(17, 24, 39);
+            lblTongPhong.Location = new Point(11, 32);
+            lblTongPhong.Name = "lblTongPhong";
+            lblTongPhong.Size = new Size(26, 30);
+            lblTongPhong.TabIndex = 1;
+            lblTongPhong.Text = "3";
+            // 
+            // lblTongPhongTitle
+            // 
+            lblTongPhongTitle.AutoSize = true;
+            lblTongPhongTitle.Font = new Font("Segoe UI", 8F);
+            lblTongPhongTitle.ForeColor = Color.FromArgb(107, 114, 128);
+            lblTongPhongTitle.Location = new Point(14, 11);
+            lblTongPhongTitle.Name = "lblTongPhongTitle";
+            lblTongPhongTitle.Size = new Size(102, 19);
+            lblTongPhongTitle.TabIndex = 0;
+            lblTongPhongTitle.Text = "Tổng số phòng";
+            // 
             // pnlDangThue
-            //
-            this.pnlDangThue.BackColor = System.Drawing.Color.White;
-            this.pnlDangThue.Controls.Add(this.lblDangThue);
-            this.pnlDangThue.Controls.Add(this.lblDangThueTitle);
-            this.pnlDangThue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDangThue.Location = new System.Drawing.Point(201, 0);
-            this.pnlDangThue.Margin = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.pnlDangThue.Name = "pnlDangThue";
-            this.pnlDangThue.Size = new System.Drawing.Size(190, 56);
-            this.pnlDangThue.TabIndex = 1;
-            //
-            // lblDangThueTitle
-            //
-            this.lblDangThueTitle.AutoSize = true;
-            this.lblDangThueTitle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lblDangThueTitle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblDangThueTitle.Location = new System.Drawing.Point(12, 8);
-            this.lblDangThueTitle.Name = "lblDangThueTitle";
-            this.lblDangThueTitle.TabIndex = 0;
-            this.lblDangThueTitle.Text = "Đang thuê";
-            //
+            // 
+            pnlDangThue.BackColor = Color.White;
+            pnlDangThue.Controls.Add(lblDangThue);
+            pnlDangThue.Controls.Add(lblDangThueTitle);
+            pnlDangThue.Dock = DockStyle.Fill;
+            pnlDangThue.Location = new Point(230, 0);
+            pnlDangThue.Margin = new Padding(0, 0, 13, 0);
+            pnlDangThue.Name = "pnlDangThue";
+            pnlDangThue.Size = new Size(217, 75);
+            pnlDangThue.TabIndex = 1;
+            // 
             // lblDangThue
-            //
-            this.lblDangThue.AutoSize = true;
-            this.lblDangThue.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblDangThue.ForeColor = System.Drawing.ColorTranslator.FromHtml("#B45309");
-            this.lblDangThue.Location = new System.Drawing.Point(10, 24);
-            this.lblDangThue.Name = "lblDangThue";
-            this.lblDangThue.TabIndex = 1;
-            this.lblDangThue.Text = "1";
-            //
+            // 
+            lblDangThue.AutoSize = true;
+            lblDangThue.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblDangThue.ForeColor = Color.FromArgb(180, 83, 9);
+            lblDangThue.Location = new Point(11, 32);
+            lblDangThue.Name = "lblDangThue";
+            lblDangThue.Size = new Size(26, 30);
+            lblDangThue.TabIndex = 1;
+            lblDangThue.Text = "1";
+            // 
+            // lblDangThueTitle
+            // 
+            lblDangThueTitle.AutoSize = true;
+            lblDangThueTitle.Font = new Font("Segoe UI", 8F);
+            lblDangThueTitle.ForeColor = Color.FromArgb(107, 114, 128);
+            lblDangThueTitle.Location = new Point(14, 11);
+            lblDangThueTitle.Name = "lblDangThueTitle";
+            lblDangThueTitle.Size = new Size(74, 19);
+            lblDangThueTitle.TabIndex = 0;
+            lblDangThueTitle.Text = "Đang thuê";
+            // 
             // pnlPhongTrong
-            //
-            this.pnlPhongTrong.BackColor = System.Drawing.Color.White;
-            this.pnlPhongTrong.Controls.Add(this.lblPhongTrong);
-            this.pnlPhongTrong.Controls.Add(this.lblPhongTrongTitle);
-            this.pnlPhongTrong.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPhongTrong.Location = new System.Drawing.Point(402, 0);
-            this.pnlPhongTrong.Margin = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.pnlPhongTrong.Name = "pnlPhongTrong";
-            this.pnlPhongTrong.Size = new System.Drawing.Size(190, 56);
-            this.pnlPhongTrong.TabIndex = 2;
-            //
-            // lblPhongTrongTitle
-            //
-            this.lblPhongTrongTitle.AutoSize = true;
-            this.lblPhongTrongTitle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lblPhongTrongTitle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblPhongTrongTitle.Location = new System.Drawing.Point(12, 8);
-            this.lblPhongTrongTitle.Name = "lblPhongTrongTitle";
-            this.lblPhongTrongTitle.TabIndex = 0;
-            this.lblPhongTrongTitle.Text = "Phòng trống";
-            //
+            // 
+            pnlPhongTrong.BackColor = Color.White;
+            pnlPhongTrong.Controls.Add(lblPhongTrong);
+            pnlPhongTrong.Controls.Add(lblPhongTrongTitle);
+            pnlPhongTrong.Dock = DockStyle.Fill;
+            pnlPhongTrong.Location = new Point(460, 0);
+            pnlPhongTrong.Margin = new Padding(0, 0, 13, 0);
+            pnlPhongTrong.Name = "pnlPhongTrong";
+            pnlPhongTrong.Size = new Size(217, 75);
+            pnlPhongTrong.TabIndex = 2;
+            // 
             // lblPhongTrong
-            //
-            this.lblPhongTrong.AutoSize = true;
-            this.lblPhongTrong.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblPhongTrong.ForeColor = System.Drawing.ColorTranslator.FromHtml("#0F766E");
-            this.lblPhongTrong.Location = new System.Drawing.Point(10, 24);
-            this.lblPhongTrong.Name = "lblPhongTrong";
-            this.lblPhongTrong.TabIndex = 1;
-            this.lblPhongTrong.Text = "1";
-            //
+            // 
+            lblPhongTrong.AutoSize = true;
+            lblPhongTrong.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblPhongTrong.ForeColor = Color.FromArgb(15, 118, 110);
+            lblPhongTrong.Location = new Point(11, 32);
+            lblPhongTrong.Name = "lblPhongTrong";
+            lblPhongTrong.Size = new Size(26, 30);
+            lblPhongTrong.TabIndex = 1;
+            lblPhongTrong.Text = "1";
+            // 
+            // lblPhongTrongTitle
+            // 
+            lblPhongTrongTitle.AutoSize = true;
+            lblPhongTrongTitle.Font = new Font("Segoe UI", 8F);
+            lblPhongTrongTitle.ForeColor = Color.FromArgb(107, 114, 128);
+            lblPhongTrongTitle.Location = new Point(14, 11);
+            lblPhongTrongTitle.Name = "lblPhongTrongTitle";
+            lblPhongTrongTitle.Size = new Size(87, 19);
+            lblPhongTrongTitle.TabIndex = 0;
+            lblPhongTrongTitle.Text = "Phòng trống";
+            // 
             // pnlDoanhThu
-            //
-            this.pnlDoanhThu.BackColor = System.Drawing.Color.White;
-            this.pnlDoanhThu.Controls.Add(this.lblDoanhThu);
-            this.pnlDoanhThu.Controls.Add(this.lblDoanhThuTitle);
-            this.pnlDoanhThu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDoanhThu.Location = new System.Drawing.Point(603, 0);
-            this.pnlDoanhThu.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlDoanhThu.Name = "pnlDoanhThu";
-            this.pnlDoanhThu.Size = new System.Drawing.Size(202, 56);
-            this.pnlDoanhThu.TabIndex = 3;
-            //
-            // lblDoanhThuTitle
-            //
-            this.lblDoanhThuTitle.AutoSize = true;
-            this.lblDoanhThuTitle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lblDoanhThuTitle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblDoanhThuTitle.Location = new System.Drawing.Point(12, 8);
-            this.lblDoanhThuTitle.Name = "lblDoanhThuTitle";
-            this.lblDoanhThuTitle.TabIndex = 0;
-            this.lblDoanhThuTitle.Text = "Doanh thu tháng";
-            //
+            // 
+            pnlDoanhThu.BackColor = Color.White;
+            pnlDoanhThu.Controls.Add(lblDoanhThu);
+            pnlDoanhThu.Controls.Add(lblDoanhThuTitle);
+            pnlDoanhThu.Dock = DockStyle.Fill;
+            pnlDoanhThu.Location = new Point(690, 0);
+            pnlDoanhThu.Margin = new Padding(0);
+            pnlDoanhThu.Name = "pnlDoanhThu";
+            pnlDoanhThu.Size = new Size(230, 75);
+            pnlDoanhThu.TabIndex = 3;
+            // 
             // lblDoanhThu
-            //
-            this.lblDoanhThu.AutoSize = true;
-            this.lblDoanhThu.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblDoanhThu.ForeColor = System.Drawing.ColorTranslator.FromHtml("#111827");
-            this.lblDoanhThu.Location = new System.Drawing.Point(10, 24);
-            this.lblDoanhThu.Name = "lblDoanhThu";
-            this.lblDoanhThu.TabIndex = 1;
-            this.lblDoanhThu.Text = "6.13tr";
-            //
+            // 
+            lblDoanhThu.AutoSize = true;
+            lblDoanhThu.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblDoanhThu.ForeColor = Color.FromArgb(17, 24, 39);
+            lblDoanhThu.Location = new Point(11, 32);
+            lblDoanhThu.Name = "lblDoanhThu";
+            lblDoanhThu.Size = new Size(76, 30);
+            lblDoanhThu.TabIndex = 1;
+            lblDoanhThu.Text = "6.13tr";
+            // 
+            // lblDoanhThuTitle
+            // 
+            lblDoanhThuTitle.AutoSize = true;
+            lblDoanhThuTitle.Font = new Font("Segoe UI", 8F);
+            lblDoanhThuTitle.ForeColor = Color.FromArgb(107, 114, 128);
+            lblDoanhThuTitle.Location = new Point(14, 11);
+            lblDoanhThuTitle.Name = "lblDoanhThuTitle";
+            lblDoanhThuTitle.Size = new Size(115, 19);
+            lblDoanhThuTitle.TabIndex = 0;
+            lblDoanhThuTitle.Text = "Doanh thu tháng";
+            // 
             // pnlChart
-            //
-            this.pnlChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlChart.BackColor = System.Drawing.Color.White;
-            this.pnlChart.Controls.Add(this.lblChart);
-            this.pnlChart.Location = new System.Drawing.Point(19, 85);
-            this.pnlChart.Name = "pnlChart";
-            this.pnlChart.Size = new System.Drawing.Size(805, 300);
-            this.pnlChart.TabIndex = 1;
-            //
+            // 
+            pnlChart.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlChart.BackColor = Color.White;
+            pnlChart.Controls.Add(lblChart);
+            pnlChart.Location = new Point(22, 113);
+            pnlChart.Margin = new Padding(3, 4, 3, 4);
+            pnlChart.Name = "pnlChart";
+            pnlChart.Size = new Size(920, 400);
+            pnlChart.TabIndex = 1;
+            // 
             // lblChart
-            //
-            this.lblChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblChart.Font = new System.Drawing.Font("Segoe UI Emoji", 10F);
-            this.lblChart.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblChart.Location = new System.Drawing.Point(0, 0);
-            this.lblChart.Name = "lblChart";
-            this.lblChart.Size = new System.Drawing.Size(805, 300);
-            this.lblChart.TabIndex = 0;
-            this.lblChart.Text = "📊 Biểu đồ doanh thu theo tháng";
-            this.lblChart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
-            // ucTongQuan
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#F2F4F8");
-            this.Controls.Add(this.pnlChart);
-            this.Controls.Add(this.tlpCards);
-            this.Name = "ucTongQuan";
-            this.Size = new System.Drawing.Size(843, 600);
-            this.tlpCards.ResumeLayout(false);
-            this.pnlTongPhong.ResumeLayout(false);
-            this.pnlTongPhong.PerformLayout();
-            this.pnlDangThue.ResumeLayout(false);
-            this.pnlDangThue.PerformLayout();
-            this.pnlPhongTrong.ResumeLayout(false);
-            this.pnlPhongTrong.PerformLayout();
-            this.pnlDoanhThu.ResumeLayout(false);
-            this.pnlDoanhThu.PerformLayout();
-            this.pnlChart.ResumeLayout(false);
-            this.ResumeLayout(false);
+            // 
+            lblChart.Dock = DockStyle.Fill;
+            lblChart.Font = new Font("Segoe UI Emoji", 10F);
+            lblChart.ForeColor = Color.FromArgb(107, 114, 128);
+            lblChart.Location = new Point(0, 0);
+            lblChart.Name = "lblChart";
+            lblChart.Size = new Size(920, 400);
+            lblChart.TabIndex = 0;
+            lblChart.Text = "📊 Biểu đồ doanh thu theo tháng";
+            lblChart.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // DashboardControl
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(242, 244, 248);
+            Controls.Add(pnlChart);
+            Controls.Add(tlpCards);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "DashboardControl";
+            Size = new Size(963, 800);
+            Load += DashboardControl_Load;
+            tlpCards.ResumeLayout(false);
+            pnlTongPhong.ResumeLayout(false);
+            pnlTongPhong.PerformLayout();
+            pnlDangThue.ResumeLayout(false);
+            pnlDangThue.PerformLayout();
+            pnlPhongTrong.ResumeLayout(false);
+            pnlPhongTrong.PerformLayout();
+            pnlDoanhThu.ResumeLayout(false);
+            pnlDoanhThu.PerformLayout();
+            pnlChart.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         private System.Windows.Forms.TableLayoutPanel tlpCards;

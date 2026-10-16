@@ -1,20 +1,20 @@
+using Quanlyphongtromini.Services;
 using Quanlyphongtromini.UserControls;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Quanlyphongtromini
 {
     public partial class MainForm : Form
     {
-        private readonly Color _normal = ColorTranslator.FromHtml("#244691");
-        private readonly Color _active = ColorTranslator.FromHtml("#3B5BC0");
-        private Button _current;
+        // Program.cs đọc: true = quay lại màn đăng nhập, false = thoát chương trình
+        public bool DangXuat { get; private set; }
 
         public MainForm()
         {
             InitializeComponent();
-            _current = btnTongQuan;
+            lblNguoiDung.Text = "👤 " + AuthService.TenDangNhap;
+            _current = btnTongQuan; // trạng thái ban đầu (màu đã đặt sẵn trong Designer)
             LoadPage(new DashboardControl());
         }
 
@@ -23,14 +23,7 @@ namespace Quanlyphongtromini
             var btn = (Button)sender;
             if (btn == _current) return;
 
-            _current.BackColor = _normal;
-            _current.Font = new Font(_current.Font, FontStyle.Regular);
-            _current.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml("#2F55A8");
-
-            btn.BackColor = _active;
-            btn.Font = new Font(btn.Font, FontStyle.Bold);
-            btn.FlatAppearance.MouseOverBackColor = _active;
-            _current = btn;
+            SetActiveButton(btn); // phần màu sắc nằm trong MainForm.Designer.cs
 
             switch (btn.Tag.ToString())
             {
@@ -44,11 +37,27 @@ namespace Quanlyphongtromini
             }
         }
 
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            var kq = MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Phòng trọ mini",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (kq != DialogResult.Yes) return;
+
+            AuthService.Logout();
+            DangXuat = true;
+            this.Close();
+        }
+
         private void LoadPage(UserControl page)
         {
             pnlContent.Controls.Clear();
             page.Dock = DockStyle.Fill;
             pnlContent.Controls.Add(page);
+        }
+
+        private void pnlContent_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

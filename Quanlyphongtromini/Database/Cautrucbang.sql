@@ -67,10 +67,24 @@ CREATE TABLE HoaDon (
 );
 GO
 
--- 5. Bảng DichVu
+
+-- 5. Bảng TaiKhoan
+
+CREATE TABLE TaiKhoan (
+    MaTK          INT IDENTITY(1,1) PRIMARY KEY,
+    TenDangNhap   VARCHAR(50)    NOT NULL UNIQUE,
+    Email         VARCHAR(100)   NOT NULL UNIQUE,
+    SoDienThoai   VARCHAR(11)    NOT NULL,
+    MatKhau       NVARCHAR(255)  NOT NULL,          
+    NgayTao       DATETIME       NOT NULL DEFAULT GETDATE()
+);
+GO
+
+-- 6. Bảng DichVu
 CREATE TABLE DichVu (
     MaDV        NVARCHAR(50)    PRIMARY KEY,           -- Mã dịch vụ
     TenDV       NVARCHAR(50),                          -- Tên dịch vụ
     DonGia      DECIMAL(10,0)                          -- Đơn giá
 );
 GO
+
