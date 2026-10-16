@@ -22,360 +22,400 @@
 
         private void InitializeComponent()
         {
-            this.pnlLoc = new System.Windows.Forms.Panel();
-            this.lblPhong = new System.Windows.Forms.Label();
-            this.cboPhong = new System.Windows.Forms.ComboBox();
-            this.lblTrangThai = new System.Windows.Forms.Label();
-            this.cboTrangThai = new System.Windows.Forms.ComboBox();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.tlpCards = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlTongThu = new System.Windows.Forms.Panel();
-            this.lblTongThu = new System.Windows.Forms.Label();
-            this.lblTongThuTitle = new System.Windows.Forms.Label();
-            this.pnlDaThu = new System.Windows.Forms.Panel();
-            this.lblDaThu = new System.Windows.Forms.Label();
-            this.lblDaThuTitle = new System.Windows.Forms.Label();
-            this.pnlConNo = new System.Windows.Forms.Panel();
-            this.lblConNo = new System.Windows.Forms.Label();
-            this.lblConNoTitle = new System.Windows.Forms.Label();
-            this.pnlBang = new System.Windows.Forms.Panel();
-            this.dgvBaoCao = new System.Windows.Forms.DataGridView();
-            this.colMaHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNguoiThue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colThangNam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPhiDV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlLoc.SuspendLayout();
-            this.tlpCards.SuspendLayout();
-            this.pnlTongThu.SuspendLayout();
-            this.pnlDaThu.SuspendLayout();
-            this.pnlConNo.SuspendLayout();
-            this.pnlBang.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBaoCao)).BeginInit();
-            this.SuspendLayout();
-            //
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            pnlLoc = new Panel();
+            lblPhong = new Label();
+            cboPhong = new ComboBox();
+            lblTrangThai = new Label();
+            cboTrangThai = new ComboBox();
+            btnXem = new Button();
+            tlpCards = new TableLayoutPanel();
+            pnlTongThu = new Panel();
+            lblTongThu = new Label();
+            lblTongThuTitle = new Label();
+            pnlDaThu = new Panel();
+            lblDaThu = new Label();
+            lblDaThuTitle = new Label();
+            pnlConNo = new Panel();
+            lblConNo = new Label();
+            lblConNoTitle = new Label();
+            pnlBang = new Panel();
+            dgvBaoCao = new DataGridView();
+            colMaHoaDon = new DataGridViewTextBoxColumn();
+            colPhong = new DataGridViewTextBoxColumn();
+            colNguoiThue = new DataGridViewTextBoxColumn();
+            colThangNam = new DataGridViewTextBoxColumn();
+            colDien = new DataGridViewTextBoxColumn();
+            colNuoc = new DataGridViewTextBoxColumn();
+            colPhiDV = new DataGridViewTextBoxColumn();
+            colTongTien = new DataGridViewTextBoxColumn();
+            colTrangThai = new DataGridViewTextBoxColumn();
+            pnlLoc.SuspendLayout();
+            tlpCards.SuspendLayout();
+            pnlTongThu.SuspendLayout();
+            pnlDaThu.SuspendLayout();
+            pnlConNo.SuspendLayout();
+            pnlBang.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBaoCao).BeginInit();
+            SuspendLayout();
+            // 
             // pnlLoc
-            //
-            this.pnlLoc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlLoc.BackColor = System.Drawing.Color.White;
-            this.pnlLoc.Controls.Add(this.lblPhong);
-            this.pnlLoc.Controls.Add(this.cboPhong);
-            this.pnlLoc.Controls.Add(this.lblTrangThai);
-            this.pnlLoc.Controls.Add(this.cboTrangThai);
-            this.pnlLoc.Controls.Add(this.btnXem);
-            this.pnlLoc.Location = new System.Drawing.Point(19, 17);
-            this.pnlLoc.Name = "pnlLoc";
-            this.pnlLoc.Size = new System.Drawing.Size(805, 56);
-            this.pnlLoc.TabIndex = 0;
-            //
+            // 
+            pnlLoc.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pnlLoc.BackColor = Color.White;
+            pnlLoc.Controls.Add(lblPhong);
+            pnlLoc.Controls.Add(cboPhong);
+            pnlLoc.Controls.Add(lblTrangThai);
+            pnlLoc.Controls.Add(cboTrangThai);
+            pnlLoc.Controls.Add(btnXem);
+            pnlLoc.Location = new Point(27, 28);
+            pnlLoc.Margin = new Padding(4, 5, 4, 5);
+            pnlLoc.Name = "pnlLoc";
+            pnlLoc.Size = new Size(1150, 93);
+            pnlLoc.TabIndex = 0;
+            // 
             // lblPhong
-            //
-            this.lblPhong.AutoSize = true;
-            this.lblPhong.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblPhong.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblPhong.Location = new System.Drawing.Point(14, 19);
-            this.lblPhong.Name = "lblPhong";
-            this.lblPhong.TabIndex = 0;
-            this.lblPhong.Text = "Phòng";
-            //
+            // 
+            lblPhong.AutoSize = true;
+            lblPhong.Font = new Font("Segoe UI", 9F);
+            lblPhong.ForeColor = Color.FromArgb(107, 114, 128);
+            lblPhong.Location = new Point(20, 32);
+            lblPhong.Margin = new Padding(4, 0, 4, 0);
+            lblPhong.Name = "lblPhong";
+            lblPhong.Size = new Size(64, 25);
+            lblPhong.TabIndex = 0;
+            lblPhong.Text = "Phòng";
+            // 
             // cboPhong
-            //
-            this.cboPhong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPhong.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboPhong.FormattingEnabled = true;
-            this.cboPhong.Items.AddRange(new object[] {
-            "Tất cả phòng"});
-            this.cboPhong.Location = new System.Drawing.Point(62, 15);
-            this.cboPhong.Name = "cboPhong";
-            this.cboPhong.Size = new System.Drawing.Size(150, 23);
-            this.cboPhong.TabIndex = 1;
-            //
+            // 
+            cboPhong.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboPhong.Font = new Font("Segoe UI", 9F);
+            cboPhong.FormattingEnabled = true;
+            cboPhong.Items.AddRange(new object[] { "Tất cả phòng" });
+            cboPhong.Location = new Point(89, 25);
+            cboPhong.Margin = new Padding(4, 5, 4, 5);
+            cboPhong.Name = "cboPhong";
+            cboPhong.Size = new Size(213, 33);
+            cboPhong.TabIndex = 1;
+            // 
             // lblTrangThai
-            //
-            this.lblTrangThai.AutoSize = true;
-            this.lblTrangThai.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblTrangThai.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblTrangThai.Location = new System.Drawing.Point(236, 19);
-            this.lblTrangThai.Name = "lblTrangThai";
-            this.lblTrangThai.TabIndex = 2;
-            this.lblTrangThai.Text = "Trạng thái";
-            //
+            // 
+            lblTrangThai.AutoSize = true;
+            lblTrangThai.Font = new Font("Segoe UI", 9F);
+            lblTrangThai.ForeColor = Color.FromArgb(107, 114, 128);
+            lblTrangThai.Location = new Point(337, 32);
+            lblTrangThai.Margin = new Padding(4, 0, 4, 0);
+            lblTrangThai.Name = "lblTrangThai";
+            lblTrangThai.Size = new Size(89, 25);
+            lblTrangThai.TabIndex = 2;
+            lblTrangThai.Text = "Trạng thái";
+            // 
             // cboTrangThai
-            //
-            this.cboTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTrangThai.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cboTrangThai.FormattingEnabled = true;
-            this.cboTrangThai.Items.AddRange(new object[] {
-            "Tất cả", "Đã thu", "Chưa thu"});
-            this.cboTrangThai.Location = new System.Drawing.Point(304, 15);
-            this.cboTrangThai.Name = "cboTrangThai";
-            this.cboTrangThai.Size = new System.Drawing.Size(120, 23);
-            this.cboTrangThai.TabIndex = 3;
-            //
+            // 
+            cboTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTrangThai.Font = new Font("Segoe UI", 9F);
+            cboTrangThai.FormattingEnabled = true;
+            cboTrangThai.Items.AddRange(new object[] { "Tất cả", "Đã thu", "Chưa thu" });
+            cboTrangThai.Location = new Point(434, 25);
+            cboTrangThai.Margin = new Padding(4, 5, 4, 5);
+            cboTrangThai.Name = "cboTrangThai";
+            cboTrangThai.Size = new Size(170, 33);
+            cboTrangThai.TabIndex = 3;
+            // 
             // btnXem
-            //
-            this.btnXem.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.btnXem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnXem.FlatAppearance.BorderSize = 0;
-            this.btnXem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnXem.ForeColor = System.Drawing.Color.White;
-            this.btnXem.Location = new System.Drawing.Point(446, 11);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(130, 32);
-            this.btnXem.TabIndex = 4;
-            this.btnXem.Text = "Xem báo cáo";
-            this.btnXem.UseVisualStyleBackColor = false;
-            //
+            // 
+            btnXem.BackColor = Color.FromArgb(36, 70, 145);
+            btnXem.Cursor = Cursors.Hand;
+            btnXem.FlatAppearance.BorderSize = 0;
+            btnXem.FlatStyle = FlatStyle.Flat;
+            btnXem.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnXem.ForeColor = Color.White;
+            btnXem.Location = new Point(637, 18);
+            btnXem.Margin = new Padding(4, 5, 4, 5);
+            btnXem.Name = "btnXem";
+            btnXem.Size = new Size(186, 53);
+            btnXem.TabIndex = 4;
+            btnXem.Text = "Xem báo cáo";
+            btnXem.UseVisualStyleBackColor = false;
+            // 
             // tlpCards
-            //
-            this.tlpCards.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpCards.BackColor = System.Drawing.Color.Transparent;
-            this.tlpCards.ColumnCount = 3;
-            this.tlpCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tlpCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tlpCards.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tlpCards.Controls.Add(this.pnlTongThu, 0, 0);
-            this.tlpCards.Controls.Add(this.pnlDaThu, 1, 0);
-            this.tlpCards.Controls.Add(this.pnlConNo, 2, 0);
-            this.tlpCards.Location = new System.Drawing.Point(19, 85);
-            this.tlpCards.Margin = new System.Windows.Forms.Padding(0);
-            this.tlpCards.Name = "tlpCards";
-            this.tlpCards.RowCount = 1;
-            this.tlpCards.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpCards.Size = new System.Drawing.Size(805, 56);
-            this.tlpCards.TabIndex = 1;
-            //
+            // 
+            tlpCards.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tlpCards.BackColor = Color.Transparent;
+            tlpCards.ColumnCount = 3;
+            tlpCards.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
+            tlpCards.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
+            tlpCards.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.34F));
+            tlpCards.Controls.Add(pnlTongThu, 0, 0);
+            tlpCards.Controls.Add(pnlDaThu, 1, 0);
+            tlpCards.Controls.Add(pnlConNo, 2, 0);
+            tlpCards.Location = new Point(27, 142);
+            tlpCards.Margin = new Padding(0);
+            tlpCards.Name = "tlpCards";
+            tlpCards.RowCount = 1;
+            tlpCards.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpCards.Size = new Size(1150, 93);
+            tlpCards.TabIndex = 1;
+            // 
             // pnlTongThu
-            //
-            this.pnlTongThu.BackColor = System.Drawing.Color.White;
-            this.pnlTongThu.Controls.Add(this.lblTongThu);
-            this.pnlTongThu.Controls.Add(this.lblTongThuTitle);
-            this.pnlTongThu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTongThu.Margin = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.pnlTongThu.Name = "pnlTongThu";
-            this.pnlTongThu.TabIndex = 0;
-            //
-            // lblTongThuTitle
-            //
-            this.lblTongThuTitle.AutoSize = true;
-            this.lblTongThuTitle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lblTongThuTitle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblTongThuTitle.Location = new System.Drawing.Point(12, 8);
-            this.lblTongThuTitle.Name = "lblTongThuTitle";
-            this.lblTongThuTitle.TabIndex = 0;
-            this.lblTongThuTitle.Text = "Tổng doanh thu";
-            //
+            // 
+            pnlTongThu.BackColor = Color.White;
+            pnlTongThu.Controls.Add(lblTongThu);
+            pnlTongThu.Controls.Add(lblTongThuTitle);
+            pnlTongThu.Dock = DockStyle.Fill;
+            pnlTongThu.Location = new Point(0, 0);
+            pnlTongThu.Margin = new Padding(0, 0, 16, 0);
+            pnlTongThu.Name = "pnlTongThu";
+            pnlTongThu.Size = new Size(367, 93);
+            pnlTongThu.TabIndex = 0;
+            // 
             // lblTongThu
-            //
-            this.lblTongThu.AutoSize = true;
-            this.lblTongThu.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblTongThu.ForeColor = System.Drawing.ColorTranslator.FromHtml("#111827");
-            this.lblTongThu.Location = new System.Drawing.Point(10, 24);
-            this.lblTongThu.Name = "lblTongThu";
-            this.lblTongThu.TabIndex = 1;
-            this.lblTongThu.Text = "6.13tr";
-            //
+            // 
+            lblTongThu.AutoSize = true;
+            lblTongThu.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblTongThu.ForeColor = Color.FromArgb(17, 24, 39);
+            lblTongThu.Location = new Point(14, 40);
+            lblTongThu.Margin = new Padding(4, 0, 4, 0);
+            lblTongThu.Name = "lblTongThu";
+            lblTongThu.Size = new Size(87, 36);
+            lblTongThu.TabIndex = 1;
+            lblTongThu.Text = "6.13tr";
+            // 
+            // lblTongThuTitle
+            // 
+            lblTongThuTitle.AutoSize = true;
+            lblTongThuTitle.Font = new Font("Segoe UI", 8F);
+            lblTongThuTitle.ForeColor = Color.FromArgb(107, 114, 128);
+            lblTongThuTitle.Location = new Point(17, 13);
+            lblTongThuTitle.Margin = new Padding(4, 0, 4, 0);
+            lblTongThuTitle.Name = "lblTongThuTitle";
+            lblTongThuTitle.Size = new Size(120, 21);
+            lblTongThuTitle.TabIndex = 0;
+            lblTongThuTitle.Text = "Tổng doanh thu";
+            // 
             // pnlDaThu
-            //
-            this.pnlDaThu.BackColor = System.Drawing.Color.White;
-            this.pnlDaThu.Controls.Add(this.lblDaThu);
-            this.pnlDaThu.Controls.Add(this.lblDaThuTitle);
-            this.pnlDaThu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDaThu.Margin = new System.Windows.Forms.Padding(0, 0, 11, 0);
-            this.pnlDaThu.Name = "pnlDaThu";
-            this.pnlDaThu.TabIndex = 1;
-            //
-            // lblDaThuTitle
-            //
-            this.lblDaThuTitle.AutoSize = true;
-            this.lblDaThuTitle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lblDaThuTitle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblDaThuTitle.Location = new System.Drawing.Point(12, 8);
-            this.lblDaThuTitle.Name = "lblDaThuTitle";
-            this.lblDaThuTitle.TabIndex = 0;
-            this.lblDaThuTitle.Text = "Đã thu";
-            //
+            // 
+            pnlDaThu.BackColor = Color.White;
+            pnlDaThu.Controls.Add(lblDaThu);
+            pnlDaThu.Controls.Add(lblDaThuTitle);
+            pnlDaThu.Dock = DockStyle.Fill;
+            pnlDaThu.Location = new Point(383, 0);
+            pnlDaThu.Margin = new Padding(0, 0, 16, 0);
+            pnlDaThu.Name = "pnlDaThu";
+            pnlDaThu.Size = new Size(367, 93);
+            pnlDaThu.TabIndex = 1;
+            // 
             // lblDaThu
-            //
-            this.lblDaThu.AutoSize = true;
-            this.lblDaThu.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblDaThu.ForeColor = System.Drawing.ColorTranslator.FromHtml("#0F766E");
-            this.lblDaThu.Location = new System.Drawing.Point(10, 24);
-            this.lblDaThu.Name = "lblDaThu";
-            this.lblDaThu.TabIndex = 1;
-            this.lblDaThu.Text = "4.50tr";
-            //
+            // 
+            lblDaThu.AutoSize = true;
+            lblDaThu.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblDaThu.ForeColor = Color.FromArgb(15, 118, 110);
+            lblDaThu.Location = new Point(14, 40);
+            lblDaThu.Margin = new Padding(4, 0, 4, 0);
+            lblDaThu.Name = "lblDaThu";
+            lblDaThu.Size = new Size(87, 36);
+            lblDaThu.TabIndex = 1;
+            lblDaThu.Text = "4.50tr";
+            // 
+            // lblDaThuTitle
+            // 
+            lblDaThuTitle.AutoSize = true;
+            lblDaThuTitle.Font = new Font("Segoe UI", 8F);
+            lblDaThuTitle.ForeColor = Color.FromArgb(107, 114, 128);
+            lblDaThuTitle.Location = new Point(17, 13);
+            lblDaThuTitle.Margin = new Padding(4, 0, 4, 0);
+            lblDaThuTitle.Name = "lblDaThuTitle";
+            lblDaThuTitle.Size = new Size(56, 21);
+            lblDaThuTitle.TabIndex = 0;
+            lblDaThuTitle.Text = "Đã thu";
+            // 
             // pnlConNo
-            //
-            this.pnlConNo.BackColor = System.Drawing.Color.White;
-            this.pnlConNo.Controls.Add(this.lblConNo);
-            this.pnlConNo.Controls.Add(this.lblConNoTitle);
-            this.pnlConNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlConNo.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlConNo.Name = "pnlConNo";
-            this.pnlConNo.TabIndex = 2;
-            //
-            // lblConNoTitle
-            //
-            this.lblConNoTitle.AutoSize = true;
-            this.lblConNoTitle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lblConNoTitle.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6B7280");
-            this.lblConNoTitle.Location = new System.Drawing.Point(12, 8);
-            this.lblConNoTitle.Name = "lblConNoTitle";
-            this.lblConNoTitle.TabIndex = 0;
-            this.lblConNoTitle.Text = "Còn nợ";
-            //
+            // 
+            pnlConNo.BackColor = Color.White;
+            pnlConNo.Controls.Add(lblConNo);
+            pnlConNo.Controls.Add(lblConNoTitle);
+            pnlConNo.Dock = DockStyle.Fill;
+            pnlConNo.Location = new Point(766, 0);
+            pnlConNo.Margin = new Padding(0);
+            pnlConNo.Name = "pnlConNo";
+            pnlConNo.Size = new Size(384, 93);
+            pnlConNo.TabIndex = 2;
+            // 
             // lblConNo
-            //
-            this.lblConNo.AutoSize = true;
-            this.lblConNo.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblConNo.ForeColor = System.Drawing.ColorTranslator.FromHtml("#B91C1C");
-            this.lblConNo.Location = new System.Drawing.Point(10, 24);
-            this.lblConNo.Name = "lblConNo";
-            this.lblConNo.TabIndex = 1;
-            this.lblConNo.Text = "1.63tr";
-            //
+            // 
+            lblConNo.AutoSize = true;
+            lblConNo.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblConNo.ForeColor = Color.FromArgb(185, 28, 28);
+            lblConNo.Location = new Point(14, 40);
+            lblConNo.Margin = new Padding(4, 0, 4, 0);
+            lblConNo.Name = "lblConNo";
+            lblConNo.Size = new Size(87, 36);
+            lblConNo.TabIndex = 1;
+            lblConNo.Text = "1.63tr";
+            // 
+            // lblConNoTitle
+            // 
+            lblConNoTitle.AutoSize = true;
+            lblConNoTitle.Font = new Font("Segoe UI", 8F);
+            lblConNoTitle.ForeColor = Color.FromArgb(107, 114, 128);
+            lblConNoTitle.Location = new Point(17, 13);
+            lblConNoTitle.Margin = new Padding(4, 0, 4, 0);
+            lblConNoTitle.Name = "lblConNoTitle";
+            lblConNoTitle.Size = new Size(61, 21);
+            lblConNoTitle.TabIndex = 0;
+            lblConNoTitle.Text = "Còn nợ";
+            // 
             // pnlBang
-            //
-            this.pnlBang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlBang.BackColor = System.Drawing.Color.White;
-            this.pnlBang.Controls.Add(this.dgvBaoCao);
-            this.pnlBang.Location = new System.Drawing.Point(19, 153);
-            this.pnlBang.Name = "pnlBang";
-            this.pnlBang.Padding = new System.Windows.Forms.Padding(8);
-            this.pnlBang.Size = new System.Drawing.Size(805, 420);
-            this.pnlBang.TabIndex = 2;
-            //
+            // 
+            pnlBang.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlBang.BackColor = Color.White;
+            pnlBang.Controls.Add(dgvBaoCao);
+            pnlBang.Location = new Point(27, 255);
+            pnlBang.Margin = new Padding(4, 5, 4, 5);
+            pnlBang.Name = "pnlBang";
+            pnlBang.Padding = new Padding(11, 13, 11, 13);
+            pnlBang.Size = new Size(1150, 700);
+            pnlBang.TabIndex = 2;
+            // 
             // dgvBaoCao
-            //
-            this.dgvBaoCao.AllowUserToAddRows = false;
-            this.dgvBaoCao.AllowUserToDeleteRows = false;
-            this.dgvBaoCao.AllowUserToResizeRows = false;
-            this.dgvBaoCao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvBaoCao.BackgroundColor = System.Drawing.Color.White;
-            this.dgvBaoCao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvBaoCao.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.dgvBaoCao.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.dgvBaoCao.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvBaoCao.ColumnHeadersDefaultCellStyle.SelectionBackColor = System.Drawing.ColorTranslator.FromHtml("#244691");
-            this.dgvBaoCao.ColumnHeadersDefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvBaoCao.ColumnHeadersHeight = 32;
-            this.dgvBaoCao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvBaoCao.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colMaHoaDon,
-            this.colPhong,
-            this.colNguoiThue,
-            this.colThangNam,
-            this.colDien,
-            this.colNuoc,
-            this.colPhiDV,
-            this.colTongTien,
-            this.colTrangThai});
-            this.dgvBaoCao.DefaultCellStyle.SelectionBackColor = System.Drawing.ColorTranslator.FromHtml("#DBE4F5");
-            this.dgvBaoCao.DefaultCellStyle.SelectionForeColor = System.Drawing.ColorTranslator.FromHtml("#111827");
-            this.dgvBaoCao.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvBaoCao.EnableHeadersVisualStyles = false;
-            this.dgvBaoCao.GridColor = System.Drawing.ColorTranslator.FromHtml("#E5E7EB");
-            this.dgvBaoCao.Location = new System.Drawing.Point(8, 8);
-            this.dgvBaoCao.MultiSelect = false;
-            this.dgvBaoCao.Name = "dgvBaoCao";
-            this.dgvBaoCao.ReadOnly = true;
-            this.dgvBaoCao.RowHeadersVisible = false;
-            this.dgvBaoCao.RowTemplate.Height = 28;
-            this.dgvBaoCao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBaoCao.Size = new System.Drawing.Size(789, 404);
-            this.dgvBaoCao.TabIndex = 0;
-            //
+            // 
+            dgvBaoCao.AllowUserToAddRows = false;
+            dgvBaoCao.AllowUserToDeleteRows = false;
+            dgvBaoCao.AllowUserToResizeRows = false;
+            dgvBaoCao.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvBaoCao.BackgroundColor = Color.White;
+            dgvBaoCao.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(36, 70, 145);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(36, 70, 145);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvBaoCao.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvBaoCao.ColumnHeadersHeight = 32;
+            dgvBaoCao.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvBaoCao.Columns.AddRange(new DataGridViewColumn[] { colMaHoaDon, colPhong, colNguoiThue, colThangNam, colDien, colNuoc, colPhiDV, colTongTien, colTrangThai });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(219, 228, 245);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(17, 24, 39);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvBaoCao.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvBaoCao.Dock = DockStyle.Fill;
+            dgvBaoCao.EnableHeadersVisualStyles = false;
+            dgvBaoCao.GridColor = Color.FromArgb(229, 231, 235);
+            dgvBaoCao.Location = new Point(11, 13);
+            dgvBaoCao.Margin = new Padding(4, 5, 4, 5);
+            dgvBaoCao.MultiSelect = false;
+            dgvBaoCao.Name = "dgvBaoCao";
+            dgvBaoCao.ReadOnly = true;
+            dgvBaoCao.RowHeadersVisible = false;
+            dgvBaoCao.RowHeadersWidth = 62;
+            dgvBaoCao.RowTemplate.Height = 28;
+            dgvBaoCao.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBaoCao.Size = new Size(1128, 674);
+            dgvBaoCao.TabIndex = 0;
+
+            // 
             // colMaHoaDon
-            //
-            this.colMaHoaDon.FillWeight = 11F;
-            this.colMaHoaDon.HeaderText = "Mã hóa đơn";
-            this.colMaHoaDon.Name = "colMaHoaDon";
-            this.colMaHoaDon.ReadOnly = true;
-            //
+            // 
+            colMaHoaDon.FillWeight = 11F;
+            colMaHoaDon.HeaderText = "Mã hóa đơn";
+            colMaHoaDon.MinimumWidth = 8;
+            colMaHoaDon.Name = "colMaHoaDon";
+            colMaHoaDon.ReadOnly = true;
+            // 
             // colPhong
-            //
-            this.colPhong.FillWeight = 8F;
-            this.colPhong.HeaderText = "Phòng";
-            this.colPhong.Name = "colPhong";
-            this.colPhong.ReadOnly = true;
-            //
+            // 
+            colPhong.FillWeight = 8F;
+            colPhong.HeaderText = "Phòng";
+            colPhong.MinimumWidth = 8;
+            colPhong.Name = "colPhong";
+            colPhong.ReadOnly = true;
+            // 
             // colNguoiThue
-            //
-            this.colNguoiThue.FillWeight = 19F;
-            this.colNguoiThue.HeaderText = "Người thuê";
-            this.colNguoiThue.Name = "colNguoiThue";
-            this.colNguoiThue.ReadOnly = true;
-            //
+            // 
+            colNguoiThue.FillWeight = 19F;
+            colNguoiThue.HeaderText = "Người thuê";
+            colNguoiThue.MinimumWidth = 8;
+            colNguoiThue.Name = "colNguoiThue";
+            colNguoiThue.ReadOnly = true;
+            // 
             // colThangNam
-            //
-            this.colThangNam.FillWeight = 11F;
-            this.colThangNam.HeaderText = "Tháng/Năm";
-            this.colThangNam.Name = "colThangNam";
-            this.colThangNam.ReadOnly = true;
-            //
+            // 
+            colThangNam.FillWeight = 11F;
+            colThangNam.HeaderText = "Tháng/Năm";
+            colThangNam.MinimumWidth = 8;
+            colThangNam.Name = "colThangNam";
+            colThangNam.ReadOnly = true;
+            // 
             // colDien
-            //
-            this.colDien.FillWeight = 9F;
-            this.colDien.HeaderText = "Điện (kWh)";
-            this.colDien.Name = "colDien";
-            this.colDien.ReadOnly = true;
-            //
+            // 
+            colDien.FillWeight = 9F;
+            colDien.HeaderText = "Điện (kWh)";
+            colDien.MinimumWidth = 8;
+            colDien.Name = "colDien";
+            colDien.ReadOnly = true;
+            // 
             // colNuoc
-            //
-            this.colNuoc.FillWeight = 9F;
-            this.colNuoc.HeaderText = "Nước (m³)";
-            this.colNuoc.Name = "colNuoc";
-            this.colNuoc.ReadOnly = true;
-            //
+            // 
+            colNuoc.FillWeight = 9F;
+            colNuoc.HeaderText = "Nước (m³)";
+            colNuoc.MinimumWidth = 8;
+            colNuoc.Name = "colNuoc";
+            colNuoc.ReadOnly = true;
+            // 
             // colPhiDV
-            //
-            this.colPhiDV.FillWeight = 10F;
-            this.colPhiDV.HeaderText = "Phí DV";
-            this.colPhiDV.Name = "colPhiDV";
-            this.colPhiDV.ReadOnly = true;
-            //
+            // 
+            colPhiDV.FillWeight = 10F;
+            colPhiDV.HeaderText = "Phí DV";
+            colPhiDV.MinimumWidth = 8;
+            colPhiDV.Name = "colPhiDV";
+            colPhiDV.ReadOnly = true;
+            // 
             // colTongTien
-            //
-            this.colTongTien.FillWeight = 13F;
-            this.colTongTien.HeaderText = "Tổng tiền";
-            this.colTongTien.Name = "colTongTien";
-            this.colTongTien.ReadOnly = true;
-            //
+            // 
+            colTongTien.FillWeight = 13F;
+            colTongTien.HeaderText = "Tổng tiền";
+            colTongTien.MinimumWidth = 8;
+            colTongTien.Name = "colTongTien";
+            colTongTien.ReadOnly = true;
+            // 
             // colTrangThai
-            //
-            this.colTrangThai.FillWeight = 10F;
-            this.colTrangThai.HeaderText = "Trạng thái";
-            this.colTrangThai.Name = "colTrangThai";
-            this.colTrangThai.ReadOnly = true;
-            //
+            // 
+            colTrangThai.FillWeight = 10F;
+            colTrangThai.HeaderText = "Trạng thái";
+            colTrangThai.MinimumWidth = 8;
+            colTrangThai.Name = "colTrangThai";
+            colTrangThai.ReadOnly = true;
+            // 
             // BaoCaoControl
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#F2F4F8");
-            this.Controls.Add(this.pnlBang);
-            this.Controls.Add(this.tlpCards);
-            this.Controls.Add(this.pnlLoc);
-            this.Name = "BaoCaoControl";
-            this.Size = new System.Drawing.Size(843, 600);
-            this.pnlLoc.ResumeLayout(false);
-            this.pnlLoc.PerformLayout();
-            this.tlpCards.ResumeLayout(false);
-            this.pnlTongThu.ResumeLayout(false);
-            this.pnlTongThu.PerformLayout();
-            this.pnlDaThu.ResumeLayout(false);
-            this.pnlDaThu.PerformLayout();
-            this.pnlConNo.ResumeLayout(false);
-            this.pnlConNo.PerformLayout();
-            this.pnlBang.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBaoCao)).EndInit();
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(242, 244, 248);
+            Controls.Add(pnlBang);
+            Controls.Add(tlpCards);
+            Controls.Add(pnlLoc);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "BaoCaoControl";
+            Size = new Size(1204, 1000);
+            pnlLoc.ResumeLayout(false);
+            pnlLoc.PerformLayout();
+            tlpCards.ResumeLayout(false);
+            pnlTongThu.ResumeLayout(false);
+            pnlTongThu.PerformLayout();
+            pnlDaThu.ResumeLayout(false);
+            pnlDaThu.PerformLayout();
+            pnlConNo.ResumeLayout(false);
+            pnlConNo.PerformLayout();
+            pnlBang.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvBaoCao).EndInit();
+            ResumeLayout(false);
         }
 
         private System.Windows.Forms.Panel pnlLoc;

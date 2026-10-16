@@ -12,6 +12,7 @@ CREATE TABLE PhongTro (
     DienTich    FLOAT,                                 -- Diện tích (m^2)
     GiaPhong    DECIMAL(10,0),                         -- Giá phòng / 1 tháng
     ToiDa       INT,                                   -- Số người tối đa
+    HienTai     INT,                                   -- Số người hiện tại
     TrangThai   NVARCHAR(20)
                 CHECK (TrangThai IN (N'Đang thuê', N'Trống'))
 );
