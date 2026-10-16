@@ -15,15 +15,15 @@ namespace Quanlyphongtromini.UserControls
             @"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
         //@"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
 
-        private string maHDCu = "";      // mã hợp đồng gốc của dòng đang chọn (dùng để tìm dòng khi Sửa)
-        private string phongCu = "";     // <-- THÊM: phòng gốc của dòng đang chọn (dùng khi Sửa/Xóa)
+        private string maHDCu = "";      // mã hợp đồng gốc của dòng đang chọn (dùng để tìm dòng khi Sửa/Xóa)
+        private string phongCu = "";     // phòng gốc của dòng đang chọn (dùng khi Sửa/Xóa)
 
         public HopDongControl()
         {
             InitializeComponent();
         }
 
-        
+
         public void LamMoiDuLieu()
         {
             LoadDuLieu("");
@@ -99,7 +99,7 @@ namespace Quanlyphongtromini.UserControls
             }
         }
 
-        // <-- THÊM: đổi trạng thái phòng trong bảng PhongTro
+        // đổi trạng thái phòng trong bảng PhongTro
         private void CapNhatTrangThaiPhong(string maPhong, string trangThai)
         {
             if (string.IsNullOrEmpty(maPhong)) return;
@@ -114,7 +114,7 @@ namespace Quanlyphongtromini.UserControls
             }
         }
 
-        // <-- THÊM: xóa trắng form sau khi Thêm/Sửa/Xóa
+        // xóa trắng form 
         private void XoaForm()
         {
             maHDCu = "";
@@ -128,6 +128,48 @@ namespace Quanlyphongtromini.UserControls
             dtpNgayKetThuc.Value = DateTime.Today;
         }
 
+        
+        private decimal? TinhTienCoc(string maPhong)
+        {
+            if (string.IsNullOrEmpty(maPhong)) return null;
+
+            using (var conn = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(
+                "SELECT GiaPhong, ToiDa FROM PhongTro WHERE MaPhong=@ma", conn))
+            {
+                cmd.Parameters.Add("@ma", SqlDbType.NVarChar, 50).Value = maPhong;
+                conn.Open();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if (!rd.Read()) return null;
+                    if (rd.IsDBNull(0) || rd.IsDBNull(1)) return null;
+
+                    decimal gia = Convert.ToDecimal(rd["GiaPhong"]);
+                    int soNguoi = Convert.ToInt32(rd["ToiDa"]);
+                    if (soNguoi <= 0) return null;          // tránh chia cho 0
+
+                    return Math.Round(gia / soNguoi, 0);    // cột TienCoc scale = 0
+                }
+            }
+        }
+
+        
+        // (đã đăng ký sự kiện trong Designer: cboPhong.SelectionChangeCommitted)
+        private void cboPhong_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string phong = (cboPhong.SelectedItem as DataRowView)?["MaPhong"]?.ToString() ?? "";
+            decimal? tc = TinhTienCoc(phong);
+
+            if (tc == null)
+            {
+                txtTienCoc.Clear();
+                MessageBox.Show("Phòng này chưa có giá phòng hoặc số người ở (phải > 0) nên không tính được tiền cọc!",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            txtTienCoc.Text = tc.Value.ToString("0");
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             //b1 lay du lieu
@@ -137,7 +179,7 @@ namespace Quanlyphongtromini.UserControls
             string nguoiThue = cboNguoiThue.SelectedValue?.ToString() ?? "";      //gán giá trị rỗng
             DateTime nbd = dtpNgayBatDau.Value.Date;
             DateTime nkt = dtpNgayKetThuc.Value.Date;
-            string tienCoc = txtTienCoc.Text.Replace(",", "").Replace(".", "").Trim();  
+            
 
             //b2 kiem tra du lieu
             if (string.IsNullOrEmpty(maHD))
@@ -170,50 +212,43 @@ namespace Quanlyphongtromini.UserControls
                 return;
             }
 
-            if (string.IsNullOrEmpty(tienCoc))
+            
+            decimal? tcTinh = TinhTienCoc(phong);
+            if (tcTinh == null)
             {
-                MessageBox.Show("Vui lòng nhập tiền cọc!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtTienCoc.Focus();
+                MessageBox.Show("Không tính được tiền cọc: phòng thiếu giá phòng hoặc số người ở phải > 0!",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            if (!decimal.TryParse(tienCoc, out decimal tc) || tc < 0)
-            {
-                MessageBox.Show("Tiền cọc phải là số và không âm!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtTienCoc.Focus();
-                return;
-            }
+            decimal tc = tcTinh.Value;
 
             //b3 + b4 ket noi database va thuc hien lenh sql
-          
-                using (SqlConnection conn = new SqlConnection(connectionString))      
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string sql = "INSERT INTO HopDong (MaHD,MaPhong,MaNguoi,DayStart,DayEnd,TrangThai,TienCoc) " +
+                    "VALUES(@MaHD,@MaPhong,@MaNguoi,@DayStart,@DayEnd,@TrangThai,@TienCoc)";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
-                    conn.Open();
-                    string sql = "INSERT INTO HopDong (MaHD,MaPhong,MaNguoi,DayStart,DayEnd,TrangThai,TienCoc) " +
-                        "VALUES(@MaHD,@MaPhong,@MaNguoi,@DayStart,@DayEnd,@TrangThai,@TienCoc)";
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@MaHD", maHD);
-                        cmd.Parameters.AddWithValue("@MaPhong", phong);
-                        cmd.Parameters.AddWithValue("@MaNguoi", nguoiThue);
-                        cmd.Parameters.AddWithValue("@DayStart", nbd);
-                        cmd.Parameters.AddWithValue("@DayEnd", nkt);
-                        cmd.Parameters.AddWithValue("@TrangThai", trangThai);
-                        cmd.Parameters.AddWithValue("@TienCoc", tc);
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.Parameters.AddWithValue("@MaHD", maHD);
+                    cmd.Parameters.AddWithValue("@MaPhong", phong);
+                    cmd.Parameters.AddWithValue("@MaNguoi", nguoiThue);
+                    cmd.Parameters.AddWithValue("@DayStart", nbd);
+                    cmd.Parameters.AddWithValue("@DayEnd", nkt);
+                    cmd.Parameters.AddWithValue("@TrangThai", trangThai);
+                    cmd.Parameters.AddWithValue("@TienCoc", tc);
+                    cmd.ExecuteNonQuery();
                 }
+            }
 
-                // hợp đồng còn hạn thì phòng chuyển sang "Đang thuê"
-                if (trangThai == "Còn hạn")
-                    CapNhatTrangThaiPhong(phong, "Đang thuê");
+            // hợp đồng còn hạn thì phòng chuyển sang "Đang thuê"
+            if (trangThai == "Còn hạn")
+                CapNhatTrangThaiPhong(phong, "Đang thuê");
 
-                MessageBox.Show("Thêm hợp đồng thành công!");
-                XoaForm();                
-                LoadDuLieu("");
-                LoadComboBox();           
+            MessageBox.Show("Thêm hợp đồng thành công!");
+            XoaForm();
+            LoadDuLieu("");
+            LoadComboBox();
         }
 
         private void HopDongControl_Load(object sender, EventArgs e)
@@ -254,40 +289,53 @@ namespace Quanlyphongtromini.UserControls
                 return;
             }
 
-            string tiencoc = txtTienCoc.Text.Replace(",", "").Replace(".", "").Trim();
-            if (!decimal.TryParse(tiencoc, out decimal tc))
+            
+            decimal tc;
+            if (phong == phongCu)
             {
-                MessageBox.Show("Tiền cọc phải là số!");
-                return;
+                if (!decimal.TryParse(txtTienCoc.Text, out tc))
+                {
+                    MessageBox.Show("Tiền cọc không hợp lệ!");
+                    return;
+                }
+            }
+            else
+            {
+                decimal? tcTinh = TinhTienCoc(phong);
+                if (tcTinh == null)
+                {
+                    MessageBox.Show("Không tính được tiền cọc: phòng thiếu giá phòng hoặc số người ở phải > 0!");
+                    return;
+                }
+                tc = tcTinh.Value;
+                txtTienCoc.Text = tc.ToString("0");
             }
 
             //b2 + b3 ket noi database va thuc hien lenh sql
             int rows;
-  
-                using (SqlConnection conn = new SqlConnection(connectionString))
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string sql = "UPDATE HopDong SET MaHD=@maMoi,MaPhong=@phong,MaNguoi=@nguoiThue,DayStart=@nbd,DayEnd=@nkt,TrangThai=@trangThai,TienCoc=@tienCoc where MaHD=@maCu";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
-                    conn.Open();
-                    string sql = "UPDATE HopDong SET MaHD=@maMoi,MaPhong=@phong,MaNguoi=@nguoiThue,DayStart=@nbd,DayEnd=@nkt,TrangThai=@trangThai,TienCoc=@tienCoc where MaHD=@maCu";
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.Add("@maMoi", SqlDbType.NVarChar, 50).Value = maHD;
-                        cmd.Parameters.Add("@maCu", SqlDbType.NVarChar, 50).Value = maHDCu;
-                        cmd.Parameters.Add("@phong", SqlDbType.NVarChar, 50).Value = phong;
-                        cmd.Parameters.Add("@nguoiThue", SqlDbType.NVarChar, 50).Value = nguoiThue;
-                        cmd.Parameters.Add("@nbd", SqlDbType.Date).Value = nbd;
-                        cmd.Parameters.Add("@nkt", SqlDbType.Date).Value = nkt;
-                        cmd.Parameters.Add("@trangThai", SqlDbType.NVarChar, 20).Value = trangThai;
-                        var p = cmd.Parameters.Add("@tienCoc", SqlDbType.Decimal);
-                        p.Precision = 18; p.Scale = 0;
-                        p.Value = tc;
+                    cmd.Parameters.Add("@maMoi", SqlDbType.NVarChar, 50).Value = maHD;
+                    cmd.Parameters.Add("@maCu", SqlDbType.NVarChar, 50).Value = maHDCu;
+                    cmd.Parameters.Add("@phong", SqlDbType.NVarChar, 50).Value = phong;
+                    cmd.Parameters.Add("@nguoiThue", SqlDbType.NVarChar, 50).Value = nguoiThue;
+                    cmd.Parameters.Add("@nbd", SqlDbType.Date).Value = nbd;
+                    cmd.Parameters.Add("@nkt", SqlDbType.Date).Value = nkt;
+                    cmd.Parameters.Add("@trangThai", SqlDbType.NVarChar, 20).Value = trangThai;
+                    var p = cmd.Parameters.Add("@tienCoc", SqlDbType.Decimal);
+                    p.Precision = 18; p.Scale = 0;
+                    p.Value = tc;
 
-                        rows = cmd.ExecuteNonQuery();      
-                    }
+                    rows = cmd.ExecuteNonQuery();
                 }
-            
-       
+            }
 
-            if (rows == 0)                                 
+            if (rows == 0)
             {
                 MessageBox.Show("Không tìm thấy hợp đồng, hãy click chọn 1 dòng trên lưới trước!");
                 return;
@@ -295,7 +343,7 @@ namespace Quanlyphongtromini.UserControls
 
             // đồng bộ trạng thái phòng
             if (!string.IsNullOrEmpty(phongCu) && phongCu != phong)
-                CapNhatTrangThaiPhong(phongCu, "Trống");                   
+                CapNhatTrangThaiPhong(phongCu, "Trống");
             CapNhatTrangThaiPhong(phong, trangThai == "Còn hạn" ? "Đang thuê" : "Trống");
 
             MessageBox.Show("sửa thành công");
@@ -306,16 +354,14 @@ namespace Quanlyphongtromini.UserControls
 
         private void btnXoaHD_Click(object sender, EventArgs e)
         {
-            //b1 lay du lieu
-            string maHD = txtMaHopDong.Text.Trim();
-
-            if (string.IsNullOrEmpty(maHD))              
+            
+            if (string.IsNullOrEmpty(maHDCu))
             {
                 MessageBox.Show("Hãy click chọn một hợp đồng trên lưới trước!");
                 return;
             }
 
-            // hỏi xác nhận TRƯỚC khi xóa (code cũ xóa xong mới hỏi)
+            // hỏi xác nhận TRƯỚC khi xóa
             if (MessageBox.Show("Bạn có chắc muốn xóa hợp đồng này?", "Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
@@ -327,7 +373,7 @@ namespace Quanlyphongtromini.UserControls
                 string sql = "DELETE FROM HopDong where MaHD=@maHD";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
-                    cmd.Parameters.Add("@maHD", SqlDbType.NVarChar, 50).Value = maHD;
+                    cmd.Parameters.Add("@maHD", SqlDbType.NVarChar, 50).Value = maHDCu;   // [SỬA] dùng maHDCu
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -346,13 +392,13 @@ namespace Quanlyphongtromini.UserControls
             var row = dgvHopDong.Rows[e.RowIndex];
 
             maHDCu = row.Cells["colMaHopDong"].Value?.ToString()?.Trim() ?? "";
-            phongCu = row.Cells["colPhong"].Value?.ToString()?.Trim() ?? "";      
+            phongCu = row.Cells["colPhong"].Value?.ToString()?.Trim() ?? "";
 
-            // nạp lại combobox 
+            // nạp lại combobox
             LoadComboBox(phongCu);
 
             txtMaHopDong.Text = row.Cells["colMaHopDong"].Value?.ToString();
-            cboPhong.SelectedValue = phongCu;                                      
+            cboPhong.SelectedValue = phongCu;
             cboNguoiThue.SelectedValue = row.Cells["colNguoiThue"].Value?.ToString();
             dtpNgayBatDau.Value = Convert.ToDateTime(row.Cells["colNgayBatDau"].Value);
             dtpNgayKetThuc.Value = Convert.ToDateTime(row.Cells["colNgayKetThuc"].Value);
@@ -362,7 +408,7 @@ namespace Quanlyphongtromini.UserControls
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            XoaForm();                      
+            XoaForm();
             txtMaHopDong.Enabled = true;
 
             txtTimKiem.Clear();
