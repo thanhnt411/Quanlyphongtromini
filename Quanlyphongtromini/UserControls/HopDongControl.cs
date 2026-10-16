@@ -12,7 +12,7 @@ namespace Quanlyphongtromini.UserControls
     public partial class HopDongControl : UserControl
     {
         private const string connectionString =
-            @"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+            @"Data Source=localhost;Initial Catalog=QLPhongTro;User ID=sa;password = 123456; Trust Server Certificate=True;";
         public HopDongControl()
         {
             InitializeComponent();
