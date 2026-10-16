@@ -23,11 +23,11 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             tlpMain = new TableLayoutPanel();
             pnlTimKiem = new Panel();
             txtTimKiem = new TextBox();
@@ -150,15 +150,15 @@
             dgvPhongTro.ColumnHeadersHeight = 34;
             dgvPhongTro.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvPhongTro.Columns.AddRange(new DataGridViewColumn[] { colMaPhong, colTenPhong, colDienTich, colGiaPhong, colHienTai, colToiDa, colTrangThai });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(17, 24, 39);
-            dataGridViewCellStyle5.Padding = new Padding(6, 0, 0, 0);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(232, 236, 248);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 24, 39);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvPhongTro.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(17, 24, 39);
+            dataGridViewCellStyle6.Padding = new Padding(6, 0, 0, 0);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(232, 236, 248);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(17, 24, 39);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvPhongTro.DefaultCellStyle = dataGridViewCellStyle6;
             dgvPhongTro.Dock = DockStyle.Fill;
             dgvPhongTro.EnableHeadersVisualStyles = false;
             dgvPhongTro.GridColor = Color.FromArgb(229, 231, 235);
@@ -214,8 +214,8 @@
             // colHienTai
             // 
             colHienTai.DataPropertyName = "HienTai";
-            dataGridViewCellStyle6.Format = "0 \"người\"";
-            colHienTai.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Format = "0 \"người\"";
+            colHienTai.DefaultCellStyle = dataGridViewCellStyle4;
             colHienTai.HeaderText = "HIỆN TẠI";
             colHienTai.MinimumWidth = 8;
             colHienTai.Name = "colHienTai";
@@ -224,8 +224,8 @@
             // colToiDa
             // 
             colToiDa.DataPropertyName = "ToiDa";
-            dataGridViewCellStyle4.Format = "0 \"người\"";
-            colToiDa.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Format = "0 \"người\"";
+            colToiDa.DefaultCellStyle = dataGridViewCellStyle5;
             colToiDa.HeaderText = "TỐI ĐA";
             colToiDa.MinimumWidth = 8;
             colToiDa.Name = "colToiDa";
@@ -426,7 +426,7 @@
             cboTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTrangThai.FlatStyle = FlatStyle.Flat;
             cboTrangThai.Font = new Font("Segoe UI", 10F);
-            cboTrangThai.Items.AddRange(new object[] { "Đang thuê", "Trống", "Bảo trì" });
+            cboTrangThai.Items.AddRange(new object[] { "Đang thuê", "Trống" });
             cboTrangThai.Location = new Point(575, 230);
             cboTrangThai.Margin = new Padding(17, 5, 0, 5);
             cboTrangThai.Name = "cboTrangThai";
