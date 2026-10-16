@@ -12,7 +12,7 @@ namespace Quanlyphongtromini.UserControls
     public partial class DichVuControl : UserControl
     {
         private const string connectionString =
-           @"Data Source=DESKTOP-GNHSIT6\SQLEXPRESS;Initial Catalog=QuanLyPhongTroMini3;Integrated Security=True;Trust Server Certificate=True";
+           @"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
 
         // Mã của dòng đang chọn (null = chưa chọn dòng nào)
         private string maCu = null;
@@ -73,7 +73,7 @@ namespace Quanlyphongtromini.UserControls
                 using var conn = new SqlConnection(connectionString);
                 conn.Open();
                 using var cmd = new SqlCommand(
-                    @"SELECT MaDV, TenDV, Gia FROM DichVu3
+                    @"SELECT MaDV, TenDV, DonGia FROM DichVu
                       WHERE MaDV LIKE @kw OR TenDV LIKE @kw
                       ORDER BY MaDV", conn);
                 cmd.Parameters.AddWithValue("@kw", "%" + tuKhoa + "%");
@@ -83,14 +83,14 @@ namespace Quanlyphongtromini.UserControls
                 {
                     dgvDichVu.Columns.Add("MaDV", "MÃ DV");
                     dgvDichVu.Columns.Add("TenDV", "TÊN DỊCH VỤ");
-                    dgvDichVu.Columns.Add("Gia", "GIÁ (VNĐ)");
+                    dgvDichVu.Columns.Add("DonGia", "GIÁ (VNĐ)");
                 }
                 dgvDichVu.Columns[2].DefaultCellStyle.Format = "N0";
 
                 dgvDichVu.Rows.Clear();
                 while (r.Read())
                 {
-                    // TenDV, Gia có thể NULL nên kiểm tra trước khi đọc
+                    // TenDV, DonGia có thể NULL nên kiểm tra trước khi đọc
                     string ten = r.IsDBNull(1) ? "" : r.GetString(1);
                     decimal gia = r.IsDBNull(2) ? 0 : r.GetDecimal(2);
                     dgvDichVu.Rows.Add(r.GetString(0), ten, gia);
@@ -134,7 +134,7 @@ namespace Quanlyphongtromini.UserControls
                 using var conn = new SqlConnection(connectionString);
                 conn.Open();
                 using var cmd = new SqlCommand(
-                    "INSERT INTO DichVu3 (MaDV, TenDV, Gia) VALUES (@ma, @ten, @gia)", conn);
+                    "INSERT INTO DichVu (MaDV, TenDV, DonGia) VALUES (@ma, @ten, @gia)", conn);
                 cmd.Parameters.AddWithValue("@ma", ma);
                 cmd.Parameters.AddWithValue("@ten", ten);
                 cmd.Parameters.AddWithValue("@gia", gia);
@@ -184,7 +184,7 @@ namespace Quanlyphongtromini.UserControls
                 using var conn = new SqlConnection(connectionString);
                 conn.Open();
                 using var cmd = new SqlCommand(
-                    "UPDATE DichVu3 SET MaDV = @maMoi, TenDV = @ten, Gia = @gia WHERE MaDV = @maCu", conn);
+                    "UPDATE DichVu SET MaDV = @maMoi, TenDV = @ten, DonGia = @gia WHERE MaDV = @maCu", conn);
                 cmd.Parameters.AddWithValue("@maMoi", ma);
                 cmd.Parameters.AddWithValue("@maCu", maCu);
                 cmd.Parameters.AddWithValue("@ten", ten);
@@ -231,7 +231,7 @@ namespace Quanlyphongtromini.UserControls
             {
                 using var conn = new SqlConnection(connectionString);
                 conn.Open();
-                using var cmd = new SqlCommand("DELETE FROM DichVu3 WHERE MaDV = @maCu", conn);
+                using var cmd = new SqlCommand("DELETE FROM DichVu WHERE MaDV = @maCu", conn);
                 cmd.Parameters.AddWithValue("@maCu", maCu);
 
                 if (cmd.ExecuteNonQuery() == 0)
