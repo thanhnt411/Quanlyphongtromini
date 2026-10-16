@@ -7,8 +7,8 @@ namespace Quanlyphongtromini.Services
     public static class AuthService
     {
         private const string connectionString =
-            @"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
-        //@"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+
+          @"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
 
         // Tên người đang đăng nhập (null = chưa đăng nhập); MainForm đọc để hiện ở sidebar
         public static string TenDangNhap { get; private set; }
@@ -21,6 +21,8 @@ namespace Quanlyphongtromini.Services
             email = email.Trim();
             soDienThoai = soDienThoai.Trim();
 
+            try
+            {
                 using var conn = new SqlConnection(connectionString);
                 conn.Open();
 
@@ -50,10 +52,21 @@ namespace Quanlyphongtromini.Services
                 insert.Parameters.AddWithValue("@m", matKhau);
                 insert.ExecuteNonQuery();
                 return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return "Lỗi hệ thống: " + ex.Message;
+            }
         }
 
         public static string Login(string tenDangNhap, string matKhau)
         {
+            if (string.IsNullOrWhiteSpace(tenDangNhap) || string.IsNullOrEmpty(matKhau))
+                return "Vui lòng nhập tên đăng nhập và mật khẩu.";
+
+            try
+            {
                 using var conn = new SqlConnection(connectionString);
                 conn.Open();
                 using var cmd = new SqlCommand(
@@ -68,6 +81,12 @@ namespace Quanlyphongtromini.Services
 
                 TenDangNhap = r.GetString(0);
                 return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return "Lỗi hệ thống: " + ex.Message;
+            }
         }
     }
 }
