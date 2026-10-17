@@ -13,7 +13,8 @@ namespace Quanlyphongtromini.UserControls
     public partial class HoaDonControl : UserControl
     {
         private const string connectionString =
-            @"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+            @"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+        //@"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
 
         private const decimal GIA_DIEN = 3500; 
         private const decimal GIA_NUOC = 15000;

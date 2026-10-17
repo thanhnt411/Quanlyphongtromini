@@ -305,6 +305,7 @@
             cboPhong.Name = "cboPhong";
             cboPhong.Size = new Size(431, 31);
             cboPhong.TabIndex = 6;
+            cboPhong.SelectionChangeCommitted += cboPhong_SelectionChangeCommitted;
             // 
             // cboNguoiThue
             // 
@@ -392,6 +393,7 @@
             txtTienCoc.Name = "txtTienCoc";
             txtTienCoc.Size = new Size(891, 30);
             txtTienCoc.TabIndex = 13;
+            txtTienCoc.ReadOnly = true;
             // 
             // flpNut
             // 
