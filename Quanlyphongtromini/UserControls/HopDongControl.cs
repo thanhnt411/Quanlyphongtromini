@@ -135,7 +135,7 @@ namespace Quanlyphongtromini.UserControls
 
             using (var conn = new SqlConnection(connectionString))
             using (var cmd = new SqlCommand(
-                "SELECT GiaPhong, ToiDa FROM PhongTro WHERE MaPhong=@ma", conn))
+                "SELECT GiaPhong, HienTai FROM PhongTro WHERE MaPhong=@ma", conn))
             {
                 cmd.Parameters.Add("@ma", SqlDbType.NVarChar, 50).Value = maPhong;
                 conn.Open();
@@ -145,8 +145,8 @@ namespace Quanlyphongtromini.UserControls
                     if (rd.IsDBNull(0) || rd.IsDBNull(1)) return null;
 
                     decimal gia = Convert.ToDecimal(rd["GiaPhong"]);
-                    int soNguoi = Convert.ToInt32(rd["ToiDa"]);
-                    if (soNguoi <= 0) return null;          // tránh chia cho 0
+                    int soNguoi = Convert.ToInt32(rd["HienTai"]);
+                    if (soNguoi <= 0) soNguoi=1;          //ko co ai thi tinh 1 ng
 
                     return Math.Round(gia / soNguoi, 0);    // cột TienCoc scale = 0
                 }
