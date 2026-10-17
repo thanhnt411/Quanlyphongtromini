@@ -265,8 +265,8 @@ using System.Windows.Forms;
             txtTenPhong.Text = dgvPhongTro.Rows[i].Cells[1].Value.ToString();
             txtDienTich.Text = dgvPhongTro.Rows[i].Cells[2].Value.ToString();
             txtGiaPhong.Text = dgvPhongTro.Rows[i].Cells[3].Value.ToString();
-            txtToiDa.Text = dgvPhongTro.Rows[i].Cells[4].Value.ToString();
-            txtHienTai.Text = dgvPhongTro.Rows[i].Cells[5].Value.ToString();
+            txtHienTai.Text = dgvPhongTro.Rows[i].Cells[4].Value.ToString();
+            txtToiDa.Text = dgvPhongTro.Rows[i].Cells[5].Value.ToString();
             cboTrangThai.Text = dgvPhongTro.Rows[i].Cells[6].Value.ToString();
         }
     }
