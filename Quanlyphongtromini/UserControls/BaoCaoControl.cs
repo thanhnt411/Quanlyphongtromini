@@ -8,8 +8,8 @@ namespace Quanlyphongtromini.UserControls
     public partial class BaoCaoControl : UserControl
     {
         private const string ConnStr =
-            @"Data Source=localhost;Initial Catalog=QLPhongTro;User ID=sa;Password=123456;TrustServerCertificate=True";
-
+              //@"Data Source=localhost;Initial Catalog=QLPhongTro;User ID=sa;Password=123456;TrustServerCertificate=True";
+              @"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
         private static readonly CultureInfo ViVN = new("vi-VN");
         private readonly Font _fontDam = new("Segoe UI", 9F, FontStyle.Bold);
 

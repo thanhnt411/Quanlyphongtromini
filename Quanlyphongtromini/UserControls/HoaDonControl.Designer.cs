@@ -48,9 +48,9 @@
             txtMaHoaDon = new TextBox();
             dtpThangNam = new DateTimePicker();
             lblPhong = new Label();
-            lblMaHopDong = new Label();
+            lblNguoiThue = new Label();
             cboPhong = new ComboBox();
-            cboMaHopDong = new ComboBox();
+            cboNguoiThue = new ComboBox();
             lblDienCu = new Label();
             lblDienMoi = new Label();
             txtDienCu = new TextBox();
@@ -61,7 +61,7 @@
             txtNuocMoi = new TextBox();
             lblPhiDichVu = new Label();
             lblTongCong = new Label();
-            txtPhiDichVu = new TextBox();
+            clbDichVu = new CheckedListBox();
             txtTongCong = new TextBox();
             flpNut = new FlowLayoutPanel();
             btnLamMoi = new Button();
@@ -70,7 +70,6 @@
             btnDaThuTien = new Button();
             btnSua = new Button();
             btnLapHoaDon = new Button();
-            btnTinhTien = new Button();
             tlpMain.SuspendLayout();
             pnlTimKiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHoaDon).BeginInit();
@@ -93,7 +92,7 @@
             tlpMain.RowCount = 3;
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 533F));
+            tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 580F));
             tlpMain.Size = new Size(1150, 944);
             tlpMain.TabIndex = 0;
             // 
@@ -116,7 +115,7 @@
             txtTimKiem.Location = new Point(0, 7);
             txtTimKiem.Margin = new Padding(4, 5, 4, 5);
             txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.PlaceholderText = "Mã phòng, tháng/năm...";
+            txtTimKiem.PlaceholderText = "Mã phòng, tên người thuê, tháng/năm...";
             txtTimKiem.Size = new Size(989, 34);
             txtTimKiem.TabIndex = 0;
             // 
@@ -181,7 +180,7 @@
             dgvHoaDon.RowHeadersWidth = 62;
             dgvHoaDon.RowTemplate.Height = 32;
             dgvHoaDon.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHoaDon.Size = new Size(1150, 314);
+            dgvHoaDon.Size = new Size(1150, 267);
             dgvHoaDon.TabIndex = 1;
             dgvHoaDon.CellClick += dgvHoaDon_CellClick;
             // 
@@ -193,10 +192,10 @@
             colMaHoaDon.Name = "colMaHoaDon";
             colMaHoaDon.ReadOnly = true;
             // 
-            // colMaHopDong
+            // colMaHopDong  (cột này giờ hiện TÊN NGƯỜI THUÊ)
             // 
-            colMaHopDong.DataPropertyName = "MaHopDong";
-            colMaHopDong.HeaderText = "MÃ HĐ";
+            colMaHopDong.DataPropertyName = "HoTen";
+            colMaHopDong.HeaderText = "NGƯỜI THUÊ";
             colMaHopDong.MinimumWidth = 8;
             colMaHopDong.Name = "colMaHopDong";
             colMaHopDong.ReadOnly = true;
@@ -269,11 +268,11 @@
             pnlThongTin.Controls.Add(tlpThongTin);
             pnlThongTin.Controls.Add(flpNut);
             pnlThongTin.Dock = DockStyle.Fill;
-            pnlThongTin.Location = new Point(0, 411);
+            pnlThongTin.Location = new Point(0, 364);
             pnlThongTin.Margin = new Padding(0);
             pnlThongTin.Name = "pnlThongTin";
             pnlThongTin.Padding = new Padding(17, 13, 17, 13);
-            pnlThongTin.Size = new Size(1150, 533);
+            pnlThongTin.Size = new Size(1150, 580);
             pnlThongTin.TabIndex = 2;
             // 
             // tlpThongTin
@@ -286,9 +285,9 @@
             tlpThongTin.Controls.Add(txtMaHoaDon, 0, 1);
             tlpThongTin.Controls.Add(dtpThangNam, 1, 1);
             tlpThongTin.Controls.Add(lblPhong, 0, 2);
-            tlpThongTin.Controls.Add(lblMaHopDong, 1, 2);
+            tlpThongTin.Controls.Add(lblNguoiThue, 1, 2);
             tlpThongTin.Controls.Add(cboPhong, 0, 3);
-            tlpThongTin.Controls.Add(cboMaHopDong, 1, 3);
+            tlpThongTin.Controls.Add(cboNguoiThue, 1, 3);
             tlpThongTin.Controls.Add(lblDienCu, 0, 4);
             tlpThongTin.Controls.Add(lblDienMoi, 1, 4);
             tlpThongTin.Controls.Add(txtDienCu, 0, 5);
@@ -299,7 +298,7 @@
             tlpThongTin.Controls.Add(txtNuocMoi, 1, 7);
             tlpThongTin.Controls.Add(lblPhiDichVu, 0, 8);
             tlpThongTin.Controls.Add(lblTongCong, 1, 8);
-            tlpThongTin.Controls.Add(txtPhiDichVu, 0, 9);
+            tlpThongTin.Controls.Add(clbDichVu, 0, 9);
             tlpThongTin.Controls.Add(txtTongCong, 1, 9);
             tlpThongTin.Dock = DockStyle.Fill;
             tlpThongTin.Location = new Point(17, 13);
@@ -315,8 +314,8 @@
             tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
             tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
-            tlpThongTin.Size = new Size(1116, 434);
+            tlpThongTin.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tlpThongTin.Size = new Size(1116, 481);
             tlpThongTin.TabIndex = 0;
             // 
             // lblMaHoaDon
@@ -382,18 +381,18 @@
             lblPhong.Text = "Phòng";
             lblPhong.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // lblMaHopDong
+            // lblNguoiThue
             // 
-            lblMaHopDong.Dock = DockStyle.Fill;
-            lblMaHopDong.Font = new Font("Segoe UI", 8F);
-            lblMaHopDong.ForeColor = Color.FromArgb(107, 114, 128);
-            lblMaHopDong.Location = new Point(562, 86);
-            lblMaHopDong.Margin = new Padding(4, 0, 4, 0);
-            lblMaHopDong.Name = "lblMaHopDong";
-            lblMaHopDong.Size = new Size(550, 33);
-            lblMaHopDong.TabIndex = 5;
-            lblMaHopDong.Text = "Mã hợp đồng";
-            lblMaHopDong.TextAlign = ContentAlignment.BottomLeft;
+            lblNguoiThue.Dock = DockStyle.Fill;
+            lblNguoiThue.Font = new Font("Segoe UI", 8F);
+            lblNguoiThue.ForeColor = Color.FromArgb(107, 114, 128);
+            lblNguoiThue.Location = new Point(562, 86);
+            lblNguoiThue.Margin = new Padding(4, 0, 4, 0);
+            lblNguoiThue.Name = "lblNguoiThue";
+            lblNguoiThue.Size = new Size(550, 33);
+            lblNguoiThue.TabIndex = 5;
+            lblNguoiThue.Text = "Người thuê";
+            lblNguoiThue.TextAlign = ContentAlignment.BottomLeft;
             // 
             // cboPhong
             // 
@@ -408,18 +407,18 @@
             cboPhong.TabIndex = 6;
             cboPhong.SelectionChangeCommitted += cboPhong_SelectionChangeCommitted;
             // 
-            // cboMaHopDong
+            // cboNguoiThue
             // 
-            cboMaHopDong.Dock = DockStyle.Top;
-            cboMaHopDong.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboMaHopDong.FlatStyle = FlatStyle.Flat;
-            cboMaHopDong.Font = new Font("Segoe UI", 10F);
-            cboMaHopDong.Location = new Point(575, 124);
-            cboMaHopDong.Margin = new Padding(17, 5, 0, 5);
-            cboMaHopDong.Name = "cboMaHopDong";
-            cboMaHopDong.Size = new Size(541, 36);
-            cboMaHopDong.TabIndex = 7;
-            cboMaHopDong.SelectionChangeCommitted += cboMaHopDong_SelectionChangeCommitted;
+            cboNguoiThue.Dock = DockStyle.Top;
+            cboNguoiThue.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboNguoiThue.FlatStyle = FlatStyle.Flat;
+            cboNguoiThue.Font = new Font("Segoe UI", 10F);
+            cboNguoiThue.Location = new Point(575, 124);
+            cboNguoiThue.Margin = new Padding(17, 5, 0, 5);
+            cboNguoiThue.Name = "cboNguoiThue";
+            cboNguoiThue.Size = new Size(541, 36);
+            cboNguoiThue.TabIndex = 7;
+            cboNguoiThue.SelectionChangeCommitted += cboNguoiThue_SelectionChangeCommitted;
             // 
             // lblDienCu
             // 
@@ -527,7 +526,7 @@
             lblPhiDichVu.Name = "lblPhiDichVu";
             lblPhiDichVu.Size = new Size(550, 33);
             lblPhiDichVu.TabIndex = 16;
-            lblPhiDichVu.Text = "Phí dịch vụ";
+            lblPhiDichVu.Text = "Dịch vụ sử dụng";
             lblPhiDichVu.TextAlign = ContentAlignment.BottomLeft;
             // 
             // lblTongCong
@@ -540,19 +539,22 @@
             lblTongCong.Name = "lblTongCong";
             lblTongCong.Size = new Size(550, 33);
             lblTongCong.TabIndex = 17;
-            lblTongCong.Text = "Tổng cộng (tự tính)";
+            lblTongCong.Text = "Tổng tiền";
             lblTongCong.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // txtPhiDichVu
+            // clbDichVu
             // 
-            txtPhiDichVu.BorderStyle = BorderStyle.FixedSingle;
-            txtPhiDichVu.Dock = DockStyle.Top;
-            txtPhiDichVu.Font = new Font("Segoe UI", 10F);
-            txtPhiDichVu.Location = new Point(0, 382);
-            txtPhiDichVu.Margin = new Padding(0, 5, 17, 5);
-            txtPhiDichVu.Name = "txtPhiDichVu";
-            txtPhiDichVu.Size = new Size(541, 34);
-            txtPhiDichVu.TabIndex = 18;
+            clbDichVu.BorderStyle = BorderStyle.FixedSingle;
+            clbDichVu.CheckOnClick = true;
+            clbDichVu.Dock = DockStyle.Fill;
+            clbDichVu.Font = new Font("Segoe UI", 10F);
+            clbDichVu.FormattingEnabled = true;
+            clbDichVu.IntegralHeight = false;
+            clbDichVu.Location = new Point(0, 382);
+            clbDichVu.Margin = new Padding(0, 5, 17, 5);
+            clbDichVu.Name = "clbDichVu";
+            clbDichVu.Size = new Size(541, 90);
+            clbDichVu.TabIndex = 18;
             // 
             // txtTongCong
             // 
@@ -575,10 +577,9 @@
             flpNut.Controls.Add(btnDaThuTien);
             flpNut.Controls.Add(btnSua);
             flpNut.Controls.Add(btnLapHoaDon);
-            flpNut.Controls.Add(btnTinhTien);
             flpNut.Dock = DockStyle.Bottom;
             flpNut.FlowDirection = FlowDirection.RightToLeft;
-            flpNut.Location = new Point(17, 447);
+            flpNut.Location = new Point(17, 494);
             flpNut.Margin = new Padding(4, 5, 4, 5);
             flpNut.Name = "flpNut";
             flpNut.Size = new Size(1116, 73);
@@ -686,23 +687,6 @@
             btnLapHoaDon.UseVisualStyleBackColor = false;
             btnLapHoaDon.Click += btnLapHoaDon_Click;
             // 
-            // btnTinhTien
-            // 
-            btnTinhTien.BackColor = Color.White;
-            btnTinhTien.Cursor = Cursors.Hand;
-            btnTinhTien.FlatAppearance.BorderColor = Color.FromArgb(209, 213, 219);
-            btnTinhTien.FlatStyle = FlatStyle.Flat;
-            btnTinhTien.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Bold);
-            btnTinhTien.ForeColor = Color.FromArgb(17, 24, 39);
-            btnTinhTien.Location = new Point(110, 10);
-            btnTinhTien.Margin = new Padding(11, 10, 0, 0);
-            btnTinhTien.Name = "btnTinhTien";
-            btnTinhTien.Size = new Size(140, 57);
-            btnTinhTien.TabIndex = 0;
-            btnTinhTien.Text = "\U0001f9ee Tính tiền";
-            btnTinhTien.UseVisualStyleBackColor = false;
-            btnTinhTien.Click += btnTinhTien_Click;
-            // 
             // HoaDonControl
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -746,9 +730,9 @@
         private System.Windows.Forms.TextBox txtMaHoaDon;
         private System.Windows.Forms.DateTimePicker dtpThangNam;
         private System.Windows.Forms.Label lblPhong;
-        private System.Windows.Forms.Label lblMaHopDong;
+        private System.Windows.Forms.Label lblNguoiThue;
         private System.Windows.Forms.ComboBox cboPhong;
-        private System.Windows.Forms.ComboBox cboMaHopDong;
+        private System.Windows.Forms.ComboBox cboNguoiThue;
         private System.Windows.Forms.Label lblDienCu;
         private System.Windows.Forms.Label lblDienMoi;
         private System.Windows.Forms.TextBox txtDienCu;
@@ -759,7 +743,7 @@
         private System.Windows.Forms.TextBox txtNuocMoi;
         private System.Windows.Forms.Label lblPhiDichVu;
         private System.Windows.Forms.Label lblTongCong;
-        private System.Windows.Forms.TextBox txtPhiDichVu;
+        private System.Windows.Forms.CheckedListBox clbDichVu;
         private System.Windows.Forms.TextBox txtTongCong;
         private System.Windows.Forms.FlowLayoutPanel flpNut;
         private System.Windows.Forms.Button btnLamMoi;
@@ -768,6 +752,5 @@
         private System.Windows.Forms.Button btnDaThuTien;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnLapHoaDon;
-        private System.Windows.Forms.Button btnTinhTien;
     }
 }

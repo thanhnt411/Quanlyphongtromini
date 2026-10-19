@@ -88,3 +88,14 @@ CREATE TABLE DichVu (
 );
 GO
 
+--7 . Bảng ChiTietDichVu
+CREATE TABLE ChiTietDichVu (
+        MaHoaDon  NVARCHAR(50) NOT NULL
+                  FOREIGN KEY REFERENCES HoaDon(MaHoaDon) ON DELETE CASCADE,
+        MaDV      NVARCHAR(50) NOT NULL
+                  FOREIGN KEY REFERENCES DichVu(MaDV),
+        DonGia    DECIMAL(10,0),
+        PRIMARY KEY (MaHoaDon, MaDV)
+    );
+GO
+

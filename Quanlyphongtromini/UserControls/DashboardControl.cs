@@ -15,8 +15,8 @@ namespace Quanlyphongtromini.UserControls
     {
 
         private const string connectionString =
-             @"Data Source=LAPTOP-71REBECI;Initial Catalog=QLPhongTro;Integrated Security=True;TrustServerCertificate=True";
-
+               //@"Data Source=LAPTOP-71REBECI;Initial Catalog=QLPhongTro;Integrated Security=True;TrustServerCertificate=True";
+               @"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
         public DashboardControl()
         {
             InitializeComponent();
