@@ -8,7 +8,9 @@ namespace Quanlyphongtromini.UserControls
     public partial class NguoiThueControl : UserControl
     {
         // Chuỗi kết nối DB (thay cho đúng máy của bạn)
-        string connectionString = @"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+        string connectionString =
+            @"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+        //@"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
         // Đối tượng kết nối dùng chung cho cả form
         SqlConnection con;
 

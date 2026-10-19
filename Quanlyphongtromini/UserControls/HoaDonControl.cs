@@ -14,8 +14,13 @@ namespace Quanlyphongtromini.UserControls
     public partial class HoaDonControl : UserControl
     {
         private const string connectionString =
+<<<<<<< Updated upstream
         //@"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
         @"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+=======
+            @"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+        //@"Server=localhost\SQLEXPRESS;Database=QLPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+>>>>>>> Stashed changes
 
         // Mã dịch vụ Điện, Nước trong bảng DichVu: giá điện/nước lấy từ 2 dòng này
         // (đổi giá ở trang Dịch vụ). Nếu bảng DichVu của bạn dùng mã khác thì sửa 2 dòng dưới cho khớp.
