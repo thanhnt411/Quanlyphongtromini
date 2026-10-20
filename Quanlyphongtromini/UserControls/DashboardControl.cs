@@ -7,19 +7,25 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-    
-
 namespace Quanlyphongtromini.UserControls
 {
     public partial class DashboardControl : UserControl
     {
 
         private const string connectionString =
-               //@"Data Source=LAPTOP-71REBECI;Initial Catalog=QLPhongTro;Integrated Security=True;TrustServerCertificate=True";
-               @"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+               @"Data Source=LAPTOP-71REBECI;Initial Catalog=QLPhongTro;Integrated Security=True;TrustServerCertificate=True";
+        //@"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+
         public DashboardControl()
         {
             InitializeComponent();
+
+            // tải lại số liệu
+            
+            this.VisibleChanged += (s, e) =>
+            {
+                if (this.Visible && !DesignMode) LoadThongKe();
+            };
         }
 
         private void DashboardControl_Load(object sender, EventArgs e)
@@ -27,6 +33,7 @@ namespace Quanlyphongtromini.UserControls
             if (DesignMode) return;     // tránh lỗi khi mở ở Designer
             LoadThongKe();
         }
+
         public void LoadThongKe()
         {
             try
@@ -36,14 +43,22 @@ namespace Quanlyphongtromini.UserControls
                     conn.Open();
 
                     int tongPhong = LayInt(conn, "SELECT COUNT(*) FROM PhongTro");
-                    int dangThue = LayInt(conn, "SELECT COUNT(DISTINCT MaPhong) FROM HopDong WHERE RTRIM(TrangThai) = N'Còn hạn'");
+            
+                    int dangThue = LayInt(conn,
+                        "SELECT COUNT(*) FROM PhongTro WHERE RTRIM(TrangThai) = N'Đang thuê'");
+
+                    int phongTrong = LayInt(conn,
+                        "SELECT COUNT(*) FROM PhongTro WHERE RTRIM(TrangThai) = N'Trống'");
+
                     decimal doanhThu = LayDecimal(conn,
                         @"SELECT ISNULL(SUM(Tong), 0) FROM HoaDon
                           WHERE MONTH(ThoiGian) = MONTH(GETDATE()) AND YEAR(ThoiGian) = YEAR(GETDATE())");
 
                     lblTongPhong.Text = tongPhong.ToString();
                     lblDangThue.Text = dangThue.ToString();
-                    lblPhongTrong.Text = (tongPhong - dangThue).ToString();
+
+                    lblPhongTrong.Text = phongTrong.ToString();
+
                     lblDoanhThu.Text = DinhDangTien(doanhThu);
                 }
             }

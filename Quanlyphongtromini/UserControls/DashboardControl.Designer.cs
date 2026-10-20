@@ -35,14 +35,12 @@
             pnlDoanhThu = new Panel();
             lblDoanhThu = new Label();
             lblDoanhThuTitle = new Label();
-            pnlChart = new Panel();
-            lblChart = new Label();
             tlpCards.SuspendLayout();
             pnlTongPhong.SuspendLayout();
             pnlDangThue.SuspendLayout();
             pnlPhongTrong.SuspendLayout();
             pnlDoanhThu.SuspendLayout();
-            pnlChart.SuspendLayout();
+            
             SuspendLayout();
             // 
             // tlpCards
@@ -201,36 +199,13 @@
             lblDoanhThuTitle.Size = new Size(115, 19);
             lblDoanhThuTitle.TabIndex = 0;
             lblDoanhThuTitle.Text = "Doanh thu tháng";
-            // 
-            // pnlChart
-            // 
-            pnlChart.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlChart.BackColor = Color.White;
-            pnlChart.Controls.Add(lblChart);
-            pnlChart.Location = new Point(22, 113);
-            pnlChart.Margin = new Padding(3, 4, 3, 4);
-            pnlChart.Name = "pnlChart";
-            pnlChart.Size = new Size(920, 400);
-            pnlChart.TabIndex = 1;
-            // 
-            // lblChart
-            // 
-            lblChart.Dock = DockStyle.Fill;
-            lblChart.Font = new Font("Segoe UI Emoji", 10F);
-            lblChart.ForeColor = Color.FromArgb(107, 114, 128);
-            lblChart.Location = new Point(0, 0);
-            lblChart.Name = "lblChart";
-            lblChart.Size = new Size(920, 400);
-            lblChart.TabIndex = 0;
-            lblChart.Text = "📊 Biểu đồ doanh thu theo tháng";
-            lblChart.TextAlign = ContentAlignment.MiddleCenter;
+            
             // 
             // DashboardControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(242, 244, 248);
-            Controls.Add(pnlChart);
             Controls.Add(tlpCards);
             Margin = new Padding(3, 4, 3, 4);
             Name = "DashboardControl";
@@ -245,7 +220,6 @@
             pnlPhongTrong.PerformLayout();
             pnlDoanhThu.ResumeLayout(false);
             pnlDoanhThu.PerformLayout();
-            pnlChart.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -262,7 +236,5 @@
         private System.Windows.Forms.Panel pnlDoanhThu;
         private System.Windows.Forms.Label lblDoanhThu;
         private System.Windows.Forms.Label lblDoanhThuTitle;
-        private System.Windows.Forms.Panel pnlChart;
-        private System.Windows.Forms.Label lblChart;
     }
 }
