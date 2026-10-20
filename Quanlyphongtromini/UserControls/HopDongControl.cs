@@ -12,8 +12,9 @@ namespace Quanlyphongtromini.UserControls
     public partial class HopDongControl : UserControl
     {
         private const string connectionString =
-            @"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
-        //@"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+
+        //@"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+        @"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
 
         private string maHDCu = "";      // mã hợp đồng gốc của dòng đang chọn (dùng để tìm dòng khi Sửa/Xóa)
         private string phongCu = "";     // phòng gốc của dòng đang chọn (dùng khi Sửa/Xóa)
@@ -66,7 +67,7 @@ namespace Quanlyphongtromini.UserControls
 
         }
 
-        // thêm tham số maPhongDangChon để lấy phòng Trống
+        
         private void LoadComboBox(string maPhongDangChon = null)
         {
             //b1 ket noi database
@@ -99,7 +100,7 @@ namespace Quanlyphongtromini.UserControls
             }
         }
 
-        // đổi trạng thái phòng trong bảng PhongTro
+        // doi trang thai phong trong phong tro
         private void CapNhatTrangThaiPhong(string maPhong, string trangThai)
         {
             if (string.IsNullOrEmpty(maPhong)) return;
@@ -114,7 +115,7 @@ namespace Quanlyphongtromini.UserControls
             }
         }
 
-        // xóa trắng form 
+        // xoa trang o nhap
         private void XoaForm()
         {
             maHDCu = "";
@@ -128,7 +129,7 @@ namespace Quanlyphongtromini.UserControls
             dtpNgayKetThuc.Value = DateTime.Today;
         }
 
-        
+
         private decimal? TinhTienCoc(string maPhong)
         {
             if (string.IsNullOrEmpty(maPhong)) return null;
@@ -146,15 +147,15 @@ namespace Quanlyphongtromini.UserControls
 
                     decimal gia = Convert.ToDecimal(rd["GiaPhong"]);
                     int soNguoi = Convert.ToInt32(rd["HienTai"]);
-                    if (soNguoi <= 0) soNguoi=1;          //ko co ai thi tinh 1 ng
+                    if (soNguoi <= 0) soNguoi = 1;          //ko co ai thi tinh 1 ng
 
-                    return Math.Round(gia / soNguoi, 0);    // cột TienCoc scale = 0
+                    return Math.Round(gia / soNguoi, 0);    // cot TienCoc scale = 0
                 }
             }
         }
 
+
         
-        // (đã đăng ký sự kiện trong Designer: cboPhong.SelectionChangeCommitted)
         private void cboPhong_SelectionChangeCommitted(object sender, EventArgs e)
         {
             string phong = (cboPhong.SelectedItem as DataRowView)?["MaPhong"]?.ToString() ?? "";
@@ -175,11 +176,11 @@ namespace Quanlyphongtromini.UserControls
             //b1 lay du lieu
             string maHD = txtMaHopDong.Text.Trim();
             string trangThai = cboTrangThai.Text.Trim();
-            string phong = cboPhong.SelectedValue?.ToString() ?? "";              //gán giá trị rỗng
-            string nguoiThue = cboNguoiThue.SelectedValue?.ToString() ?? "";      //gán giá trị rỗng
+            string phong = cboPhong.SelectedValue?.ToString() ?? "";              //gan gia tri rong
+            string nguoiThue = cboNguoiThue.SelectedValue?.ToString() ?? "";      //gan gia tri rong
             DateTime nbd = dtpNgayBatDau.Value.Date;
             DateTime nkt = dtpNgayKetThuc.Value.Date;
-            
+
 
             //b2 kiem tra du lieu
             if (string.IsNullOrEmpty(maHD))
@@ -212,7 +213,7 @@ namespace Quanlyphongtromini.UserControls
                 return;
             }
 
-            
+
             decimal? tcTinh = TinhTienCoc(phong);
             if (tcTinh == null)
             {
@@ -241,7 +242,7 @@ namespace Quanlyphongtromini.UserControls
                 }
             }
 
-            // hợp đồng còn hạn thì phòng chuyển sang "Đang thuê"
+            // hop dong con han thi chuyen qua dang thue
             if (trangThai == "Còn hạn")
                 CapNhatTrangThaiPhong(phong, "Đang thuê");
 
@@ -257,17 +258,18 @@ namespace Quanlyphongtromini.UserControls
             LoadComboBox();
         }
 
+        
         private void btnSua_Click(object sender, EventArgs e)
         {
             //b1 lay du lieu
             string maHD = txtMaHopDong.Text.Trim();
             string trangThai = cboTrangThai.Text.Trim();
-            string phong = cboPhong.SelectedValue?.ToString() ?? "";            //gán giá trị rỗng
-            string nguoiThue = cboNguoiThue.SelectedValue?.ToString() ?? "";    //gán giá trị rỗng
+            string phong = cboPhong.SelectedValue?.ToString() ?? "";            //gan gia tri rong
+            string nguoiThue = cboNguoiThue.SelectedValue?.ToString() ?? "";    //gan gia tri rong
             DateTime nbd = dtpNgayBatDau.Value.Date;
             DateTime nkt = dtpNgayKetThuc.Value.Date;
 
-            // kiểm tra trước khi chạy SQL
+            // ktra trc khi chay sql
             if (string.IsNullOrEmpty(maHDCu))
             {
                 MessageBox.Show("Hãy click chọn một hợp đồng trên lưới trước!");
@@ -289,7 +291,7 @@ namespace Quanlyphongtromini.UserControls
                 return;
             }
 
-            
+
             decimal tc;
             if (phong == phongCu)
             {
@@ -314,25 +316,46 @@ namespace Quanlyphongtromini.UserControls
             //b2 + b3 ket noi database va thuc hien lenh sql
             int rows;
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try                                                    
             {
-                conn.Open();
-                string sql = "UPDATE HopDong SET MaHD=@maMoi,MaPhong=@phong,MaNguoi=@nguoiThue,DayStart=@nbd,DayEnd=@nkt,TrangThai=@trangThai,TienCoc=@tienCoc where MaHD=@maCu";
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    cmd.Parameters.Add("@maMoi", SqlDbType.NVarChar, 50).Value = maHD;
-                    cmd.Parameters.Add("@maCu", SqlDbType.NVarChar, 50).Value = maHDCu;
-                    cmd.Parameters.Add("@phong", SqlDbType.NVarChar, 50).Value = phong;
-                    cmd.Parameters.Add("@nguoiThue", SqlDbType.NVarChar, 50).Value = nguoiThue;
-                    cmd.Parameters.Add("@nbd", SqlDbType.Date).Value = nbd;
-                    cmd.Parameters.Add("@nkt", SqlDbType.Date).Value = nkt;
-                    cmd.Parameters.Add("@trangThai", SqlDbType.NVarChar, 20).Value = trangThai;
-                    var p = cmd.Parameters.Add("@tienCoc", SqlDbType.Decimal);
-                    p.Precision = 18; p.Scale = 0;
-                    p.Value = tc;
+                    conn.Open();
+                    string sql = "UPDATE HopDong SET MaHD=@maMoi,MaPhong=@phong,MaNguoi=@nguoiThue,DayStart=@nbd,DayEnd=@nkt,TrangThai=@trangThai,TienCoc=@tienCoc where MaHD=@maCu";
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.Add("@maMoi", SqlDbType.NVarChar, 50).Value = maHD;
+                        cmd.Parameters.Add("@maCu", SqlDbType.NVarChar, 50).Value = maHDCu;
+                        cmd.Parameters.Add("@phong", SqlDbType.NVarChar, 50).Value = phong;
+                        cmd.Parameters.Add("@nguoiThue", SqlDbType.NVarChar, 50).Value = nguoiThue;
+                        cmd.Parameters.Add("@nbd", SqlDbType.Date).Value = nbd;
+                        cmd.Parameters.Add("@nkt", SqlDbType.Date).Value = nkt;
+                        cmd.Parameters.Add("@trangThai", SqlDbType.NVarChar, 20).Value = trangThai;
+                        var p = cmd.Parameters.Add("@tienCoc", SqlDbType.Decimal);
+                        p.Precision = 18; p.Scale = 0;
+                        p.Value = tc;
 
-                    rows = cmd.ExecuteNonQuery();
+                        rows = cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)   // trung maHD
+            {
+                MessageBox.Show("Mã hợp đồng '" + maHD + "' đã tồn tại, hãy chọn mã khác!",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (SqlException ex) when (ex.Number == 547)                         // vuong khoa ngoai
+            {
+                MessageBox.Show("Không thể đổi mã hợp đồng này vì đã có hóa đơn liên quan.\n" +
+                                "Hãy giữ nguyên mã hợp đồng và chỉ sửa các thông tin khác.",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (SqlException ex)                                                 // loi khac
+            {
+                MessageBox.Show("Không sửa được hợp đồng: " + ex.Message);
+                return;
             }
 
             if (rows == 0)
@@ -341,7 +364,7 @@ namespace Quanlyphongtromini.UserControls
                 return;
             }
 
-            // đồng bộ trạng thái phòng
+            // dong bo trang thai phong
             if (!string.IsNullOrEmpty(phongCu) && phongCu != phong)
                 CapNhatTrangThaiPhong(phongCu, "Trống");
             CapNhatTrangThaiPhong(phong, trangThai == "Còn hạn" ? "Đang thuê" : "Trống");
@@ -352,33 +375,49 @@ namespace Quanlyphongtromini.UserControls
             LoadComboBox();
         }
 
+        
         private void btnXoaHD_Click(object sender, EventArgs e)
         {
-            
+
             if (string.IsNullOrEmpty(maHDCu))
             {
                 MessageBox.Show("Hãy click chọn một hợp đồng trên lưới trước!");
                 return;
             }
 
-            // hỏi xác nhận TRƯỚC khi xóa
+            // hoi xac nhan
             if (MessageBox.Show("Bạn có chắc muốn xóa hợp đồng này?", "Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
             //b2 + b3 ket noi database va thuc hien lenh sql
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try                                                    
             {
-                conn.Open();
-                string sql = "DELETE FROM HopDong where MaHD=@maHD";
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    cmd.Parameters.Add("@maHD", SqlDbType.NVarChar, 50).Value = maHDCu;   // [SỬA] dùng maHDCu
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+                    string sql = "DELETE FROM HopDong where MaHD=@maHD";
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.Add("@maHD", SqlDbType.NVarChar, 50).Value = maHDCu;
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
+            catch (SqlException ex) when (ex.Number == 547)         // hop dong da co hoa don
+            {
+                MessageBox.Show("Không thể xóa hợp đồng này vì đã có hóa đơn liên quan.\n" +
+                                "Hãy xóa hóa đơn trước, hoặc đổi trạng thái hợp đồng sang 'Hết hạn'.",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;                                             // return de phong ko bi doi thanh trong
+            }
+            catch (SqlException ex)                                 // loi khac
+            {
+                MessageBox.Show("Không xóa được hợp đồng: " + ex.Message);
+                return;
+            }
 
-            // hợp đồng bị xóa thì phòng được trả về "Trống"
+            // hop dong bi xoa thi phong tro thanh trong
             CapNhatTrangThaiPhong(phongCu, "Trống");
 
             XoaForm();
@@ -394,7 +433,7 @@ namespace Quanlyphongtromini.UserControls
             maHDCu = row.Cells["colMaHopDong"].Value?.ToString()?.Trim() ?? "";
             phongCu = row.Cells["colPhong"].Value?.ToString()?.Trim() ?? "";
 
-            // nạp lại combobox
+            // nap lai combobox
             LoadComboBox(phongCu);
 
             txtMaHopDong.Text = row.Cells["colMaHopDong"].Value?.ToString();
@@ -414,7 +453,7 @@ namespace Quanlyphongtromini.UserControls
             txtTimKiem.Clear();
 
             LoadDuLieu("");
-            LoadComboBox();                 // nạp lại phòng trống
+            LoadComboBox();                 // nap lai phong trong
             dgvHopDong.ClearSelection();
 
             txtMaHopDong.Focus();
