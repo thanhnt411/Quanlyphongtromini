@@ -407,7 +407,7 @@ namespace Quanlyphongtromini.UserControls
             catch (SqlException ex) when (ex.Number == 547)         // hop dong da co hoa don
             {
                 MessageBox.Show("Không thể xóa hợp đồng này vì đã có hóa đơn liên quan.\n" +
-                                "Hãy xóa hóa đơn trước, hoặc đổi trạng thái hợp đồng sang 'Hết hạn'.",
+                                "Hãy xóa hóa đơn trước",
                     "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;                                             // return de phong ko bi doi thanh trong
             }
