@@ -7,9 +7,9 @@ namespace Quanlyphongtromini.Services
     public static class AuthService
     {
         private const string connectionString =
-          @"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+          //@"Server=LAPTOP-71REBECI;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
           //@"Data Source=localhost;Initial Catalog=QLPhongTro;User ID=sa;password = 123456;Trust Server Certificate=True;";
-          //@"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
+          @"Server=localhost\SQLEXPRESS;Database=QlPhongTro;Trusted_Connection=True;TrustServerCertificate=True;";
         // Tên người đang đăng nhập (null = chưa đăng nhập); MainForm đọc để hiện ở sidebar
         public static string TenDangNhap { get; private set; }
 
@@ -74,8 +74,6 @@ namespace Quanlyphongtromini.Services
                 cmd.Parameters.AddWithValue("@u", tenDangNhap.Trim());
                 using var r = cmd.ExecuteReader();
 
-                // So mật khẩu trong C# (phân biệt hoa/thường). Nếu so trong SQL thì
-                // SQL Server mặc định KHÔNG phân biệt hoa/thường, "ABC" sẽ khớp "abc".
                 if (!r.Read() || !string.Equals(r.GetString(1), matKhau, StringComparison.Ordinal))
                     return "Sai tên đăng nhập hoặc mật khẩu.";
 
