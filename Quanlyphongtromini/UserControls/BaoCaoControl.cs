@@ -149,35 +149,5 @@ ORDER BY hd.ThoiGian DESC, p.TenPhong";
             e.CellStyle.ForeColor = daThu ? Color.FromArgb(15, 118, 110) : Color.FromArgb(185, 28, 28);
             e.CellStyle.Font = _fontDam;
         }
-
-        // ====== Xuất CSV (mở được bằng Excel, giữ tiếng Việt) ======
-        // Gắn vào một nút bất kỳ: btnXuat.Click += (s, e) => XuatCsv();
-        public void XuatCsv()
-        {
-            if (dgvBaoCao.Rows.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu để xuất.");
-                return;
-            }
-
-            using var dlg = new SaveFileDialog
-            {
-                Filter = "CSV (*.csv)|*.csv",
-                FileName = $"BaoCao_{DateTime.Now:yyyyMMdd_HHmm}.csv"
-            };
-            if (dlg.ShowDialog() != DialogResult.OK) return;
-
-            static string Q(object? v) => "\"" + v?.ToString()?.Replace("\"", "\"\"") + "\"";
-
-            var dong = new List<string>
-            {
-                string.Join(",", dgvBaoCao.Columns.Cast<DataGridViewColumn>().Select(c => Q(c.HeaderText)))
-            };
-            foreach (DataGridViewRow row in dgvBaoCao.Rows)
-                dong.Add(string.Join(",", row.Cells.Cast<DataGridViewCell>().Select(c => Q(c.Value))));
-
-            File.WriteAllLines(dlg.FileName, dong, new UTF8Encoding(true));
-            MessageBox.Show("Đã xuất báo cáo thành công.");
-        }
     }
 }
